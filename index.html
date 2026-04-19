@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSW Cutting — Precision Metal Fabrication · Birmingham, AL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --navy: #0b0f1a;
+      --navy-2: #131929;
+      --navy-3: #1a2236;
+      --navy-4: #222d42;
+      --blue: #38bdf8;
+      --blue-dim: rgba(56,189,248,0.15);
+      --text: #e2e8f0;
+      --muted: #8898b0;
+      --border: rgba(255,255,255,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--navy); color: var(--text); font-family: 'Inter', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 1rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(11,15,26,0.96);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue); color: #0b0f1a;
+      padding: 0.5rem 1.25rem; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background-image: url('photos/sparks-2.jpg');
+      background-size: cover; background-position: center;
+      position: relative; display: flex; align-items: flex-end;
+      padding-top: 60px;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(11,15,26,0.92) 0%, rgba(11,15,26,0.6) 60%, rgba(11,15,26,0.2) 100%);
+    }
+    .hero-content { position: relative; z-index: 10; padding: 4rem 3rem 5rem; max-width: 720px; }
+    .hero-label {
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1.25rem; display: block;
+    }
+    .hero-title {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 700; line-height: 1.1; margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      color: #94a3b8; font-size: 1.05rem; line-height: 1.7;
+      margin-bottom: 2.25rem; font-weight: 300; max-width: 540px;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: #0b0f1a;
+      padding: 0.8rem 2rem; font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      transition: opacity 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      border: 1px solid rgba(56,189,248,0.4); color: var(--blue);
+      padding: 0.8rem 2rem; font-size: 0.875rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { background: var(--blue-dim); border-color: var(--blue); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--navy-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: center;
+    }
+    .stat { padding: 1.75rem 4rem; text-align: center; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-size: 1.875rem; font-weight: 700; color: var(--blue); line-height: 1; margin-bottom: 0.35rem; }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+    /* SECTION COMMON */
+    section { padding: 5rem 0; }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; display: block; }
+    .section-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .section-body { color: var(--muted); line-height: 1.75; font-size: 0.95rem; max-width: 600px; margin-bottom: 3rem; }
+
+    /* CAPABILITIES */
+    .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .cap-card {
+      background: var(--navy-2); padding: 2.25rem 2rem;
+      transition: background 0.2s;
+    }
+    .cap-card:hover { background: var(--navy-3); }
+    .cap-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .cap-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
+    .cap-spec { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
+    .cap-spec strong { color: #94a3b8; font-weight: 500; }
+    .cap-highlight { color: var(--blue); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 1rem; display: block; }
+
+    /* PHOTO STRIP */
+    .photo-strip { background: var(--navy-2); }
+    .strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+    }
+    .strip-grid img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+      filter: brightness(0.85) saturate(0.9);
+      transition: filter 0.25s, transform 0.25s;
+      cursor: pointer;
+    }
+    .strip-grid img:hover { filter: brightness(1) saturate(1.1); transform: scale(1.01); }
+    .strip-grid .wide { grid-column: span 2; }
+    .strip-grid .tall { aspect-ratio: 4/5; }
+
+    /* INDUSTRIES */
+    .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .ind-card {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      padding: 1.75rem 1.5rem;
+    }
+    .ind-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .ind-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .ind-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
+
+    /* DIFFERENTIATORS */
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--border); }
+    .diff-card { background: var(--navy-2); padding: 2.5rem; }
+    .diff-num { font-size: 3rem; font-weight: 700; color: var(--blue-dim); line-height: 1; margin-bottom: 0.5rem; color: rgba(56,189,248,0.2); }
+    .diff-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .diff-body { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* CTA BAND */
+    .cta-band {
+      background: linear-gradient(135deg, #0b1829 0%, #091220 100%);
+      border-top: 1px solid var(--border);
+      padding: 5rem 2.5rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(56,189,248,0.07) 0%, transparent 70%);
+    }
+    .cta-band h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; position: relative; }
+    .cta-band p { color: var(--muted); margin-bottom: 2.5rem; font-size: 1rem; max-width: 520px; margin-left: auto; margin-right: auto; position: relative; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* CONTACT INFO */
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .contact-item { text-align: center; }
+    .contact-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; display: block; }
+    .contact-val { color: var(--text); font-size: 0.9rem; }
+
+    /* FOOTER */
+    footer {
+      background: #070b14;
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--blue); }
+
+    /* LIGHTBOX */
+    #lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.97); z-index: 1000;
+      align-items: center; justify-content: center;
+    }
+    #lightbox.active { display: flex; }
+    #lightbox img { max-height: 92vh; max-width: 92vw; object-fit: contain; }
+    #lb-close { position: fixed; top: 1.5rem; right: 2rem; color: #666; font-size: 1.5rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">DSW<span>.</span>Cutting</a>
+    <div class="nav-links">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#industries">Industries</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-label">Birmingham, Alabama · Since 2004</span>
+      <h1 class="hero-title">Precision Metal<br>Fabrication.<br>Ready When You Are.</h1>
+      <p class="hero-sub">Sheet metal, tube laser, structural fabrication, and CNC bending for industry's most demanding applications. 185,000 sq ft. Ships nationwide.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get a Quote →</a>
+        <a href="#capabilities" class="btn-outline">See Our Capabilities</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">185K</div>
+      <div class="stat-label">Sq Ft Facility</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Years in Operation</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2"</div>
+      <div class="stat-label">Max Plate Thickness</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">27'</div>
+      <div class="stat-label">Max Tube Length</div>
+    </div>
+  </div>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities">
+    <div class="section-inner">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Full-Service Metal Fabrication</h2>
+      <p class="section-body">From raw stock to finished part — laser cutting, bending, welding, and finishing under one roof. Our engineering team can support your project from DFM review through production.</p>
+
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-icon">⚡</div>
+          <div class="cap-name">Fiber Laser Cutting</div>
+          <div class="cap-spec">
+            <strong>Equipment:</strong> Mitsubishi Fiber Laser, tower-fed automation<br>
+            <strong>Materials:</strong> Carbon Steel, Stainless, Aluminum<br>
+            <strong>Plate thickness:</strong> Light gauge to <strong>1"</strong><br>
+            <strong>Plasma:</strong> Carbon plate to <strong>2"</strong> with bevel capability
+          </div>
+          <span class="cap-highlight">High-volume, tight-tolerance sheet cutting</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🔩</div>
+          <div class="cap-name">Tube Laser</div>
+          <div class="cap-spec">
+            <strong>Equipment:</strong> BLM (Southeast's leading tube laser platform)<br>
+            <strong>Profiles:</strong> Round, square, rectangular, structural beams, C-channels, angles<br>
+            <strong>Max diameter:</strong> <strong>12.7"</strong><br>
+            <strong>Max length:</strong> <strong>27 ft</strong><br>
+            <strong>Bevel:</strong> 2D and 3D bevel capability<br>
+            <strong>Software:</strong> BLM AR-Tube design integration
+          </div>
+          <span class="cap-highlight">Complex tube fabrication without secondary ops</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🏗️</div>
+          <div class="cap-name">CNC Press Brake Bending</div>
+          <div class="cap-spec">
+            <strong>Equipment:</strong> Mitsubishi/Murata electric + electric/hydraulic hybrid<br>
+            <strong>Automation:</strong> Robotic bending cell<br>
+            <strong>Max part weight:</strong> <strong>330 lbs</strong><br>
+            <strong>Max part length:</strong> <strong>14 ft</strong>
+          </div>
+          <span class="cap-highlight">High-precision bends on large, heavy parts</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🔥</div>
+          <div class="cap-name">Welding</div>
+          <div class="cap-spec">
+            <strong>Manual welding:</strong> MIG, TIG, structural<br>
+            <strong>Robotic weld cells:</strong> High-volume, consistent quality<br>
+            <strong>Fixtures:</strong> In-house fixture design and fabrication<br>
+            <strong>Materials:</strong> Carbon steel, stainless, aluminum
+          </div>
+          <span class="cap-highlight">Manual and robotic — same house, same standards</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🛡️</div>
+          <div class="cap-name">Finishing</div>
+          <div class="cap-spec">
+            <strong>Through partner network:</strong><br>
+            Electroplating · Hot-dip galvanizing · E-coat<br>
+            Powder coating · Electro galvanizing
+          </div>
+          <span class="cap-highlight">One PO, complete part — no vendor coordination</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">📐</div>
+          <div class="cap-name">Engineering Support</div>
+          <div class="cap-spec">
+            <strong>DFM review:</strong> Design for manufacturability at quoting stage<br>
+            <strong>Material selection:</strong> A36, A572-50, A514, AR400, stainless, aluminum<br>
+            <strong>Process selection:</strong> Laser vs. plasma, bend sequence optimization<br>
+            <strong>QA:</strong> First-piece sampling verification program
+          </div>
+          <span class="cap-highlight">Engineering team with shop floor experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip" id="gallery">
+    <div class="section-inner" style="padding-bottom:0;padding-top:0;">
+      <div style="padding-top:3rem;padding-bottom:1.5rem;">
+        <span class="section-label">The Shop</span>
+        <h2 class="section-title">185,000 Sq Ft of Capability</h2>
+      </div>
+    </div>
+    <div class="strip-grid">
+      <img src="photos/sparks-1.jpg" alt="Laser cutting sparks" loading="lazy">
+      <img src="photos/tube-laser-wide.jpg" alt="BLM tube laser wide view" class="wide" loading="lazy">
+      <img src="photos/sparks-3.jpg" alt="Cutting sparks detail" loading="lazy">
+      <img src="photos/tube-laser-dairuike-cutting.jpg" alt="Tube laser in operation" loading="lazy">
+      <img src="photos/tube-laser-chuck-closeup.jpg" alt="Tube laser chuck closeup" loading="lazy">
+      <img src="photos/tube-laser-dairuike-front.jpg" alt="Tube laser front view" loading="lazy">
+      <img src="photos/lntech-flat-laser.jpg" alt="Flat sheet laser cutter" class="wide" loading="lazy">
+      <img src="photos/tube-laser-chuck-gripping.jpg" alt="Tube laser gripping tube" loading="lazy">
+      <img src="photos/tube-laser-chuck-top.jpg" alt="Tube laser top view" loading="lazy">
+      <img src="photos/robot-bending-cell.jpg" alt="Robotic bending cell" loading="lazy">
+      <img src="photos/shop-floor-flat-laser-forklift.jpg" alt="Shop floor with flat laser and forklift" class="wide" loading="lazy">
+      <img src="photos/worker-bending.jpg" alt="Worker operating press brake" loading="lazy">
+      <img src="photos/welder.jpg" alt="Welder at work" loading="lazy">
+    </div>
+  </div>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="section-inner">
+      <span class="section-label">Who We Serve</span>
+      <h2 class="section-title">Built for Demanding Industries</h2>
+      <p class="section-body">We supply fabricated metal components to manufacturers and OEMs across the country. If your application demands tight tolerances, complex geometry, or high volume — this is where it gets done.</p>
+
+      <div class="ind-grid">
+        <div class="ind-card">
+          <div class="ind-icon">🚛</div>
+          <div class="ind-name">Trucking & Trailer</div>
+          <div class="ind-desc">Structural components, cab assemblies, and chassis parts for Class 8 trucks and heavy trailers. Long parts, heavy plate, high volume.</div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🚜</div>
+          <div class="ind-name">Agricultural Equipment</div>
+          <div class="ind-desc">Tractor frames, implement components, and structural weldments for major ag OEMs. AR400 wear plate, complex tube geometry.</div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">⚙️</div>
+          <div class="ind-name">Power & Data Infrastructure</div>
+          <div class="ind-desc">Enclosures, mounting structures, and support frames for power generation systems and data center infrastructure.</div>
+        </div>
+        <div class="ind-card">
+          <div class="ind-icon">🏭</div>
+          <div class="ind-name">Industrial Equipment</div>
+          <div class="ind-desc">Custom fabrication for OEM equipment manufacturers — frames, guards, brackets, weldments, and complex multi-process assemblies.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATORS -->
+  <section style="padding-top:0;">
+    <div class="section-inner">
+      <span class="section-label">Why DSW</span>
+      <h2 class="section-title" style="margin-bottom:2rem;">The Difference Is in the Details</h2>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <div class="diff-num">01</div>
+          <div class="diff-title">Engineering-Driven Sales Team</div>
+          <div class="diff-body">Our estimators have manufacturing backgrounds. When you call with a drawing, you're talking to someone who understands DFM, material properties, and process selection — not just a price quote.</div>
+        </div>
+        <div class="diff-card">
+          <div class="diff-num">02</div>
+          <div class="diff-title">First-Piece Verification Program</div>
+          <div class="diff-body">Every new part goes through first-piece sampling before full production. Dimensional check, material cert verification, process confirmation. You don't get surprises at receiving.</div>
+        </div>
+        <div class="diff-card">
+          <div class="diff-num">03</div>
+          <div class="diff-title">Full Process Under One Roof</div>
+          <div class="diff-body">Laser to bend to weld to finish — one PO, one point of contact, one schedule. No vendor handoffs, no finger-pointing when something's late. We own the whole part.</div>
+        </div>
+        <div class="diff-card">
+          <div class="diff-num">04</div>
+          <div class="diff-title">JIT & Mill-Direct Pricing</div>
+          <div class="diff-body">We buy direct from the mill and maintain inventory programs for volume customers. Just-in-time delivery schedules reduce your inventory overhead without risking line stoppages.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALS -->
+  <section style="padding-top:0;">
+    <div class="section-inner">
+      <span class="section-label">Materials</span>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">Stocked & Ready</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);">
+        <div style="background:var(--navy-2);padding:1.5rem 2rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem;">Carbon Steel</div>
+          <div style="color:var(--muted);font-size:0.85rem;line-height:1.9;">A36 · A572-50 · A514 · AR400<br>Light gauge to 2" plate<br>Mill-direct pricing available</div>
+        </div>
+        <div style="background:var(--navy-2);padding:1.5rem 2rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem;">Stainless Steel</div>
+          <div style="color:var(--muted);font-size:0.85rem;line-height:1.9;">304 · 316 · Other alloys on request<br>Sheet to 1" plate<br>Tube and structural profiles</div>
+        </div>
+        <div style="background:var(--navy-2);padding:1.5rem 2rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem;">Aluminum</div>
+          <div style="color:var(--muted);font-size:0.85rem;line-height:1.9;">6061 · 5052 · Other alloys<br>Sheet to 1"<br>Tube and extrusions</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band" id="contact">
+    <h2>Ready to Get Started?</h2>
+    <p>Send us a drawing and we'll get back with a quote. Our team turns around estimates fast — usually within one business day for standard parts.</p>
+    <div class="cta-buttons">
+      <a href="mailto:info@dswcutting.com" class="btn-primary">Request a Quote →</a>
+      <a href="tel:+12055551234" class="btn-outline">Call Us</a>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <div class="contact-val">Birmingham, Alabama<br>Industrial District</div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <div class="contact-val"><a href="mailto:info@dswcutting.com" style="color:var(--blue);text-decoration:none;">info@dswcutting.com</a></div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Operation</span>
+        <div class="contact-val">185,000 sq ft · Since 2004<br>Ships Nationwide</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 DSW Cutting · Birmingham, AL</span>
+    <div style="display:flex;gap:2rem;">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#industries">Industries</a>
+      <a href="#contact">Contact</a>
+      <a href="https://dswcutting.com" target="_blank">dswcutting.com</a>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <span id="lb-close">✕</span>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // Gallery lightbox
+    const stripImgs = Array.from(document.querySelectorAll('.strip-grid img'));
+    stripImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('lb-img').src = img.src;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('lb-close').addEventListener('click', () => {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) { this.classList.remove('active'); document.body.style.overflow = ''; }
+    });
+
+    // Sticky nav background
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 80 ? 'rgba(11,15,26,0.98)' : 'rgba(11,15,26,0.96)';
+    });
+  </script>
+</body>
+</html>
