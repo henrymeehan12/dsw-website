@@ -199,59 +199,58 @@ nav {
   color: var(--text);
 }
 
-/* CAPABILITIES — split photo | white panel */
+/* CAPABILITIES — full-bleed photo + floating white card */
 .cap-section {
-  display: grid;
-  grid-template-areas: "photo content";
-  grid-template-columns: 1fr 1fr;
-  min-height: 580px;
-  border-bottom: var(--dark-rule);
-}
-.cap-section.text-left {
-  grid-template-areas: "content photo";
+  position: relative;
+  height: 640px;
+  overflow: hidden;
+  border-bottom: var(--border-light);
 }
 .cap-bg {
-  grid-area: photo;
-  position: relative;
-  overflow: hidden;
+  position: absolute; inset: 0;
 }
 .cap-bg img {
-  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover; display: block;
-  transition: transform 6s ease;
+  transition: transform 7s ease;
 }
 .cap-section:hover .cap-bg img { transform: scale(1.04); }
 .cap-overlay { display: none; }
 .cap-content {
-  grid-area: content;
-  background: var(--white);
-  padding: 4rem 3.5rem;
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  right: 5%;
+  width: 42%; max-width: 520px;
+  background: rgba(255,255,255,0.97);
+  padding: 3rem 2.75rem;
   display: flex; flex-direction: column; justify-content: center;
-  position: static; transform: none; width: 100%; max-width: 100%;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+}
+.cap-section.text-left .cap-content {
+  right: auto; left: 5%;
 }
 .cap-tag {
   font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
   color: var(--brand); margin-bottom: 0.75rem; display: block;
 }
 .cap-heading {
-  font-family: 'Oswald', 'Inter', sans-serif;
-  font-size: 2rem; font-weight: 700; letter-spacing: 0.04em;
-  text-transform: uppercase; line-height: 1.1; margin-bottom: 1.25rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.85rem; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; line-height: 1.1; margin-bottom: 1.1rem;
   color: var(--dark-text);
 }
 .cap-desc {
-  font-size: 0.875rem; color: var(--dark-muted); line-height: 1.85;
-  margin-bottom: 1.5rem;
+  font-size: 0.85rem; color: var(--text-mid); line-height: 1.8;
+  margin-bottom: 1.25rem;
 }
 .cap-desc strong { color: var(--dark-text); font-weight: 600; }
-.cap-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.25rem 0 1.5rem 0; }
+.cap-specs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.25rem 0; }
 .cap-spec-pill {
   background: rgba(42,102,159,0.07);
-  border: 1px solid rgba(42,102,159,0.3);
-  padding: 0.4rem 1rem;
+  border: 1px solid rgba(42,102,159,0.28);
+  padding: 0.35rem 0.85rem;
   font-family: 'Oswald', sans-serif;
-  font-size: 0.78rem; font-weight: 600;
+  font-size: 0.75rem; font-weight: 600;
   color: var(--brand);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -414,17 +413,17 @@ footer a:hover { color: var(--muted); }
   /* CAPABILITIES HEADER */
   #capabilities { padding: 2.5rem 1.25rem 1.5rem; }
 
-  /* CAPABILITY SECTIONS — stack vertically on mobile */
-  .cap-section {
-    grid-template-areas: "photo" "content";
-    grid-template-columns: 1fr;
-    min-height: unset;
+  /* CAPABILITY SECTIONS — stack on mobile */
+  .cap-section { height: auto; min-height: unset; }
+  .cap-bg { position: relative; height: 55vw; min-height: 240px; max-height: 340px; }
+  .cap-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cap-content {
+    position: static; transform: none;
+    right: auto; left: auto; width: 100%; max-width: 100%;
+    background: var(--white); padding: 2rem 1.25rem;
+    box-shadow: none;
   }
-  .cap-section.text-left {
-    grid-template-areas: "photo" "content";
-  }
-  .cap-bg { height: 55vw; min-height: 220px; max-height: 320px; }
-  .cap-content { padding: 2rem 1.25rem; background: var(--white); }
+  .cap-section.text-left .cap-content { left: auto; }
   .cap-heading { font-size: 1.5rem; }
   .cap-specs { gap: 0.4rem; }
   .cap-spec-pill { font-size: 0.75rem; padding: 0.35rem 0.8rem; }
