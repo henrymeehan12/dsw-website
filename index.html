@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DSW Cutting — Precision Metal Fabrication · Birmingham, AL</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -49,10 +50,13 @@
     /* HERO */
     .hero {
       height: 100vh; min-height: 640px;
-      background-image: url('photos/sparks-plasma-dramatic.jpg');
-      background-size: cover; background-position: center 40%;
       position: relative; display: flex; align-items: flex-end;
-      padding-top: 60px;
+      padding-top: 60px; overflow: hidden;
+    }
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
     }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -162,7 +166,7 @@
     /* PROMISE */
     .promise-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); }
     .promise-item { background: var(--navy-2); padding: 1.75rem 1.5rem; }
-    .promise-dot { width: 6px; height: 6px; background: var(--blue-light); margin-bottom: 1rem; }
+    .promise-icon { height: 40px; width: auto; margin-bottom: 1rem; opacity: 0.85; }
     .promise-text { font-size: 0.82rem; font-weight: 500; color: var(--muted); line-height: 1.5; }
 
     /* INDUSTRIES */
@@ -231,6 +235,9 @@
 
   <!-- HERO -->
   <div class="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="photos/sparks-plasma-dramatic.jpg">
+      <source src="photos/dsw_webloop-Original.mp4" type="video/mp4">
+    </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <span class="hero-eyebrow">Birmingham, Alabama &nbsp;·&nbsp; Since 2004</span>
@@ -273,6 +280,9 @@
         <a href="#capabilities">View our capabilities &rarr;</a>
       </div>
       <div>
+        <div style="margin-bottom:1.5px;">
+          <img src="photos/shop-13.jpg" alt="DSW sales engineer reviewing drawings" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center 20%;display:block;filter:brightness(0.88) saturate(0.9);">
+        </div>
         <div class="process-list">
           <div class="process-item">
             <div class="process-num">01</div>
@@ -305,11 +315,11 @@
     <div style="max-width:1200px;margin:0 auto;padding:2.25rem 3rem;">
       <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Our Promise of Excellence</div>
       <div class="promise-grid">
-        <div class="promise-item"><div class="promise-dot"></div><div class="promise-text">On-Time Fulfillment</div></div>
-        <div class="promise-item"><div class="promise-dot"></div><div class="promise-text">Competitive Pricing</div></div>
-        <div class="promise-item"><div class="promise-dot"></div><div class="promise-text">Quality Driven</div></div>
-        <div class="promise-item"><div class="promise-dot"></div><div class="promise-text">Latest Technology &amp; Equipment</div></div>
-        <div class="promise-item"><div class="promise-dot"></div><div class="promise-text">Single Point of Contact</div></div>
+        <div class="promise-item"><img src="icons/On-Time-Fulfillment.svg" class="promise-icon" alt=""><div class="promise-text">On-Time Fulfillment</div></div>
+        <div class="promise-item"><img src="icons/Competitive-Pricing.svg" class="promise-icon" alt=""><div class="promise-text">Competitive Pricing</div></div>
+        <div class="promise-item"><img src="icons/Quality-Driven.svg" class="promise-icon" alt=""><div class="promise-text">Quality Driven</div></div>
+        <div class="promise-item"><img src="icons/Latest-Technology.svg" class="promise-icon" alt=""><div class="promise-text">Latest Technology &amp; Equipment</div></div>
+        <div class="promise-item"><img src="icons/Single-Point-of-Communication.svg" class="promise-icon" alt=""><div class="promise-text">Single Point of Contact</div></div>
       </div>
     </div>
   </div>
@@ -419,22 +429,20 @@
       <h2 class="section-title">185,000 Sq Ft of Capability</h2>
     </div>
     <div class="photo-grid">
-      <img src="photos/sparks-1.jpg" alt="Laser cutting" loading="lazy">
+      <img src="photos/shop-8.jpg" class="span-2" alt="CNC plasma cutting — sparks" loading="lazy">
       <img src="photos/tube-laser-wide.jpg" class="span-2" alt="BLM tube laser" loading="lazy">
-      <img src="photos/sparks-3.jpg" alt="Cutting detail" loading="lazy">
-      <img src="photos/tube-laser-dairuike-cutting.jpg" alt="Tube laser in operation" loading="lazy">
-      <img src="photos/tube-laser-chuck-closeup.jpg" alt="Tube laser chuck" loading="lazy">
-      <img src="photos/tube-laser-dairuike-front.jpg" alt="Tube laser front" loading="lazy">
-      <img src="photos/lntech-flat-laser.jpg" class="span-2" alt="Flat laser cutter" loading="lazy">
-      <img src="photos/tube-laser-chuck-gripping.jpg" alt="Tube laser gripping" loading="lazy">
-      <img src="photos/tube-laser-chuck-top.jpg" alt="Tube laser top view" loading="lazy">
+      <img src="photos/shop-5.jpg" alt="CNC press brake operation" loading="lazy">
+      <img src="photos/tube-laser-dairuike-cutting.jpg" alt="Tube laser cutting in operation" loading="lazy">
+      <img src="photos/tube-laser-chuck-closeup.jpg" alt="Tube laser chuck closeup" loading="lazy">
+      <img src="photos/shop-6.jpg" alt="Worker handling laser-cut parts, overhead crane" loading="lazy">
+      <img src="photos/lntech-flat-laser.jpg" class="span-2" alt="Flat fiber laser cutter" loading="lazy">
+      <img src="photos/shop-2.jpg" class="span-2" alt="FARO CMM quality inspection arm" loading="lazy">
       <img src="photos/robot-bending-cell.jpg" alt="Robotic bending cell" loading="lazy">
-      <img src="photos/shop-floor-flat-laser-forklift.jpg" class="span-2" alt="Shop floor" loading="lazy">
-      <img src="photos/worker-bending.jpg" alt="Press brake operation" loading="lazy">
       <img src="photos/welder.jpg" alt="Welding" loading="lazy">
-      <img src="photos/mitsubishi-laser-cutting.jpg" alt="Mitsubishi fiber laser cutting sheet metal" loading="lazy">
-      <img src="photos/laser-head-sparks.jpg" alt="Laser cutting head sparks detail" loading="lazy">
-      <img src="photos/finished-parts-pallets.jpg" class="span-2" alt="Finished laser-cut parts on pallets" loading="lazy">
+      <img src="photos/drone-aerial-1.jpg" class="span-2" alt="Finished parts staging — overhead view" loading="lazy">
+      <img src="photos/mitsubishi-laser-cutting.jpg" alt="Mitsubishi fiber laser cutting" loading="lazy">
+      <img src="photos/finished-parts-pallets.jpg" alt="Laser-cut parts on pallets" loading="lazy">
+      <img src="photos/shop-floor-flat-laser-forklift.jpg" class="span-2" alt="Shop floor — flat laser and forklift" loading="lazy">
     </div>
   </div>
 
