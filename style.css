@@ -43,7 +43,7 @@ nav {
   display: flex; align-items: center;
   text-decoration: none; line-height: 1;
 }
-.nav-logo img { height: 36px; width: auto; display: block; filter: brightness(0) invert(1); }
+.nav-logo img { height: 36px; width: auto; display: block; }
 .nav-logo span { color: var(--blue-light); }
 .nav-links { display: flex; gap: 2.5rem; }
 .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; letter-spacing: 0.02em; transition: color 0.2s; }
