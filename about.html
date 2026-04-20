@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About DSW Cutting — Birmingham's Fabrication Partner Since 2004</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ABOUT PAGE SPECIFIC */
+    .origin-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 580px;
+    }
+    .origin-photo {
+      position: relative;
+      overflow: hidden;
+    }
+    .origin-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .origin-text {
+      background: var(--navy-2);
+      padding: 5rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .origin-text h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.02em; color: var(--text);
+      margin-bottom: 1.5rem; line-height: 1.15;
+    }
+    .origin-text p {
+      color: var(--muted); line-height: 1.8; font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+    .origin-text p:last-child { margin-bottom: 0; }
+
+    /* HERITAGE BANNER */
+    .heritage-banner {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
+    }
+    .heritage-banner img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      filter: brightness(0.35) saturate(0.7);
+    }
+    .heritage-banner-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 2rem 3rem;
+    }
+    .heritage-banner-content .section-eyebrow {
+      border-color: var(--brand-light);
+      color: var(--brand-light);
+      border: none; padding: 0;
+      margin-bottom: 1rem;
+    }
+    .heritage-banner-content h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; color: #fff;
+      max-width: 800px; line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .heritage-banner-content p {
+      color: #cbd5e1; font-size: 1rem;
+      max-width: 620px; line-height: 1.75;
+    }
+
+    /* BY THE NUMBERS */
+    .about-stats {
+      background: var(--white);
+      border-top: var(--dark-rule);
+      border-bottom: var(--dark-rule);
+    }
+    .about-stats-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+    }
+    .about-stat {
+      padding: 3rem 2rem;
+      border-right: var(--dark-rule);
+    }
+    .about-stat:last-child { border-right: none; }
+    .about-stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.75rem; font-weight: 700;
+      color: var(--brand); display: block;
+      letter-spacing: -0.01em; line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .about-stat-label {
+      font-size: 0.7rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--dark-muted);
+      font-weight: 500;
+    }
+
+    /* PHILOSOPHY */
+    .philosophy-section {
+      background: var(--white);
+      padding: 5rem 3rem;
+    }
+    .philosophy-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: start;
+    }
+    .philosophy-left h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.03em; color: var(--dark-text);
+      line-height: 1.15; margin-bottom: 1.5rem;
+    }
+    .philosophy-left p {
+      color: var(--dark-muted); line-height: 1.8;
+      font-size: 0.95rem; margin-bottom: 1.25rem;
+    }
+    .philosophy-right { padding-top: 0.5rem; }
+    .differentiator {
+      border-top: var(--dark-rule);
+      padding: 1.5rem 0;
+    }
+    .differentiator:last-child { border-bottom: var(--dark-rule); }
+    .differentiator-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      color: var(--brand); font-weight: 600;
+      text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .differentiator-title {
+      font-weight: 700; color: var(--dark-text);
+      font-size: 0.95rem; margin-bottom: 0.35rem;
+    }
+    .differentiator-body {
+      font-size: 0.85rem; color: var(--dark-muted);
+      line-height: 1.65;
+    }
+
+    /* LEADERSHIP */
+    .leadership-section {
+      background: var(--off-white);
+      border-top: var(--dark-rule);
+      padding: 5rem 3rem;
+    }
+    .leadership-inner {
+      max-width: 900px; margin: 0 auto;
+    }
+    .leadership-card {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4rem; align-items: center;
+      margin-top: 3rem;
+    }
+    .leadership-photo-placeholder {
+      aspect-ratio: 3/4;
+      background: var(--navy-3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 0.8rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .leadership-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--dark-text); text-transform: uppercase;
+      letter-spacing: 0.03em; margin-bottom: 0.25rem;
+    }
+    .leadership-title {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 1.25rem;
+    }
+    .leadership-bio {
+      color: var(--dark-muted); font-size: 0.93rem;
+      line-height: 1.8;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .origin-section { grid-template-columns: 1fr; }
+      .origin-photo { height: 280px; }
+      .origin-text { padding: 2.5rem 1.25rem; }
+      .about-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .about-stat { border-right: none; border-bottom: var(--dark-rule); }
+      .about-stat:nth-child(odd) { border-right: var(--dark-rule); }
+      .about-stat:last-child { border-bottom: none; }
+      .philosophy-section { padding: 3rem 1.25rem; }
+      .philosophy-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .leadership-section { padding: 3rem 1.25rem; }
+      .leadership-card { grid-template-columns: 1fr; gap: 2rem; }
+      .leadership-photo-placeholder { aspect-ratio: 3/2; }
+      .heritage-banner { height: 320px; }
+      .heritage-banner-content { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="dsw-logo.svg" alt="DSW Cutting" style="height:36px;"></a>
+    <div class="nav-links">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="gallery.html">The Shop</a>
+      <a href="industries.html">Industries</a>
+      <a href="about.html" style="color:var(--text);">About</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div style="max-width:1100px; margin:0 auto;">
+      <span class="section-eyebrow">Birmingham, Alabama · Since 2004</span>
+      <h1>About DSW Cutting</h1>
+    </div>
+  </div>
+
+  <!-- ORIGIN STORY -->
+  <div class="origin-section">
+    <div class="origin-photo">
+      <img src="photos/warehouse-cranes-stock.jpg" alt="DSW facility — 185,000 sq ft Birmingham">
+    </div>
+    <div class="origin-text">
+      <span class="section-eyebrow" style="color:var(--brand-light);border-color:var(--brand-light);">Where We Came From</span>
+      <h2>A Shop Reborn<br>in Steel City.</h2>
+      <p>DSW's roots trace back to a knife shop that opened its doors in Birmingham in the 1960s — back when this city's steel mills ran around the clock and the air smelled like hot metal. The legacy of that era, of craftsmanship and heavy industry, is still very much alive here.</p>
+      <p>In 2004, Chris McIlvaine acquired the business and saw something others didn't: the potential to transform a legacy shop into one of the region's most capable precision metal fabrication operations. He invested in people, technology, and floor space — and kept investing.</p>
+      <p>Twenty years later, that bet has paid off. What began as a small cutting operation is now a 185,000 sq ft facility employing nearly 200 people, running lights-out laser production, robotic bending cells, and tube laser systems capable of 40-foot cuts — all a few miles from the Sloss Furnace smokestacks that put Birmingham on the map.</p>
+    </div>
+  </div>
+
+  <!-- HERITAGE BANNER -->
+  <div class="heritage-banner">
+    <img src="photos/plasma-burst-dark.jpg" alt="DSW laser cutting — Birmingham steel heritage">
+    <div class="heritage-banner-content">
+      <div style="font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--brand-light);margin-bottom:0.75rem;">Birmingham, Alabama</div>
+      <h2>Steel has always run through this city.<br>We're just keeping the tradition alive.</h2>
+      <p>Sloss Furnace cast iron for generations. DSW cuts, bends, and welds the steel that builds the next generation of heavy equipment, data centers, and infrastructure. Different tools. Same city. Same grit.</p>
+    </div>
+  </div>
+
+  <!-- BY THE NUMBERS -->
+  <div class="about-stats">
+    <div class="about-stats-inner">
+      <div class="about-stat">
+        <span class="about-stat-num">2004</span>
+        <div class="about-stat-label">Year Established</div>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-num">185k</span>
+        <div class="about-stat-label">Square Feet</div>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-num">~200</span>
+        <div class="about-stat-label">Employees</div>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-num">6</span>
+        <div class="about-stat-label">Fiber Laser Systems</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <div class="philosophy-section">
+    <div class="philosophy-inner">
+      <div class="philosophy-left">
+        <span class="section-eyebrow" style="color:var(--brand);border-color:var(--brand);">How We Work</span>
+        <h2>We're a Product Partner.<br>Not Just a Vendor.</h2>
+        <p>Since 2004, DSW has been supporting manufacturers by producing the parts they need — accurately, affordably, and on time. That's the baseline. What separates us is everything that happens around the part.</p>
+        <p>Our sales team has real manufacturing experience. When you call DSW, you're talking to someone who understands your drawing, your material, your tolerances — and can tell you if there's a better way to make it before the quote goes out. That's DFM guidance most shops don't offer.</p>
+        <p>Our quality program includes first-piece sampling verification on every new part — so you know what you ordered is exactly what you're getting before we run the full production quantity. No surprises at receiving.</p>
+      </div>
+      <div class="philosophy-right">
+        <div class="differentiator">
+          <div class="differentiator-num">01</div>
+          <div class="differentiator-title">Manufacturing-Experienced Sales</div>
+          <div class="differentiator-body">Our sales engineers understand fabrication. They review drawings, suggest process improvements, and flag DFM issues at quoting — not after the order is placed.</div>
+        </div>
+        <div class="differentiator">
+          <div class="differentiator-num">02</div>
+          <div class="differentiator-title">First-Piece Sampling Program</div>
+          <div class="differentiator-body">Every new part goes through first-piece verification before full production. Your parts are to spec before we run quantity. No exceptions.</div>
+        </div>
+        <div class="differentiator">
+          <div class="differentiator-num">03</div>
+          <div class="differentiator-title">Lights-Out Production Capability</div>
+          <div class="differentiator-body">Automated material towers and robotic bending cells mean production doesn't stop when the shift ends. Competitive lead times, even on volume.</div>
+        </div>
+        <div class="differentiator">
+          <div class="differentiator-num">04</div>
+          <div class="differentiator-title">One Roof. One Point of Contact.</div>
+          <div class="differentiator-body">Laser, tube laser, bending, welding, and finishing under one roof — managed by a single point of contact. Fewer vendors. Fewer handoffs. Better parts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEADERSHIP -->
+  <div class="leadership-section">
+    <div class="leadership-inner">
+      <span class="section-eyebrow" style="color:var(--brand);border-color:var(--brand);">Leadership</span>
+      <h2 class="section-title" style="color:var(--dark-text);">The People Behind the Shop</h2>
+      <div class="leadership-card">
+        <div class="leadership-photo-placeholder">
+          <!-- TODO: Add photo of Chris McIlvaine -->
+          Photo Coming Soon
+        </div>
+        <div>
+          <div class="leadership-name">Chris McIlvaine</div>
+          <div class="leadership-title">Chief Executive Officer</div>
+          <div class="leadership-bio">
+            <p style="margin-bottom:1rem;">Chris acquired DSW in 2004 and has spent the two decades since transforming it from a legacy knife shop into one of Alabama's most capable precision metal fabrication operations.</p>
+            <p style="margin-bottom:1rem;">His philosophy is straightforward: invest in the best technology, hire people who know the trade, and treat every customer like a long-term partner. That approach has driven continuous growth — from the shop's original footprint to 185,000 sq ft and nearly 200 employees.</p>
+            <p>Under Chris's leadership, DSW has added lights-out laser production, robotic bending cells, tube laser systems, and a quality program that gives customers confidence before the first production run.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Ready to Talk?</h2>
+    <p>Send us your drawings and let's build something together.</p>
+    <div class="cta-buttons">
+      <a href="contact.html" class="btn-primary">Contact Us</a>
+      <a href="capabilities.html" class="btn-outline">View Capabilities</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2025 DSW Cutting &nbsp;&middot;&nbsp; Birmingham, Alabama</span>
+    <div class="footer-links">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="gallery.html">The Shop</a>
+      <a href="industries.html">Industries</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.dswcutting.com" target="_blank" rel="noopener">dswcutting.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
