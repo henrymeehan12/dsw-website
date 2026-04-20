@@ -256,11 +256,44 @@
     .contact-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-light); display: block; margin-bottom: 0.4rem; }
     .contact-val { font-size: 0.875rem; color: var(--muted); }
 
-    /* MATERIALS */
-    .mat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
-    .mat-card { background: var(--navy-2); padding: 1.75rem 2rem; }
-    .mat-name { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.75rem; display: block; }
-    .mat-body { font-size: 0.82rem; color: var(--muted); line-height: 1.9; }
+    /* MATERIALS — full-bleed section */
+    .mat-section {
+      position: relative; min-height: 580px;
+      display: flex; align-items: center;
+      overflow: hidden; border-bottom: var(--rule);
+    }
+    .mat-bg { position: absolute; inset: 0; }
+    .mat-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.25) saturate(0.6); }
+    .mat-content {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      padding: 4.5rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem;
+    }
+    .mat-col-header {
+      grid-column: 1 / -1;
+      margin-bottom: 0.25rem;
+    }
+    .mat-heading {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .mat-col-title {
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--blue-light); margin-bottom: 1rem; display: block;
+      border-left: 2px solid var(--blue-light); padding-left: 0.6rem;
+    }
+    .mat-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .mat-tag {
+      background: rgba(14,165,233,0.15);
+      border: 1px solid rgba(56,189,248,0.4);
+      padding: 0.4rem 1rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      color: #bae6fd; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
     /* FOOTER */
     footer {
@@ -547,21 +580,50 @@
   </div>
 
   <!-- MATERIALS -->
-  <div style="padding: 0 3rem 5rem;">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Materials We Stock</div>
-      <div class="mat-grid">
-        <div class="mat-card">
-          <span class="mat-name">Carbon Steel</span>
-          <div class="mat-body">A36 &nbsp;·&nbsp; A572-50 &nbsp;·&nbsp; A514 &nbsp;·&nbsp; AR400<br>Light gauge to 2" plate<br>Mill-direct pricing available<br>JIT and stocking programs</div>
+  <div class="mat-section" id="materials">
+    <div class="mat-bg"><img src="photos/warehouse-cranes-stock.jpg" alt="DSW material warehouse"></div>
+    <div class="mat-content">
+      <div class="mat-col-header">
+        <span class="section-eyebrow">Stock &amp; Material Capability</span>
+        <h2 class="mat-heading">What We Cut &amp; Form</h2>
+      </div>
+
+      <div>
+        <span class="mat-col-title">Flat Profiles</span>
+        <div class="mat-tags">
+          <span class="mat-tag">Sheet Metal</span>
+          <span class="mat-tag">Flat Plate</span>
+          <span class="mat-tag">Floor Plate</span>
+          <span class="mat-tag">Expanded Metal</span>
         </div>
-        <div class="mat-card">
-          <span class="mat-name">Stainless Steel</span>
-          <div class="mat-body">304 &nbsp;·&nbsp; 316 &nbsp;·&nbsp; Other alloys on request<br>Sheet to 1" plate<br>Tube and structural profiles<br>Specialty grades available</div>
+      </div>
+
+      <div>
+        <span class="mat-col-title">Tube &amp; Structural</span>
+        <div class="mat-tags">
+          <span class="mat-tag">Round Tube (HSS)</span>
+          <span class="mat-tag">Square Tube</span>
+          <span class="mat-tag">Rectangular HSS</span>
+          <span class="mat-tag">I-Beam / W-Beam</span>
+          <span class="mat-tag">C-Channel</span>
+          <span class="mat-tag">Angle Iron</span>
+          <span class="mat-tag">T-Bar</span>
+          <span class="mat-tag">Flat Bar</span>
+          <span class="mat-tag">Pipe</span>
+          <span class="mat-tag">Structural Beam</span>
         </div>
-        <div class="mat-card">
-          <span class="mat-name">Aluminum</span>
-          <div class="mat-body">6061 &nbsp;·&nbsp; 5052 &nbsp;·&nbsp; Other alloys<br>Sheet to 1"<br>Tube and extrusions<br>Mill partnerships for broad selection</div>
+      </div>
+
+      <div>
+        <span class="mat-col-title">Material Grades</span>
+        <div class="mat-tags">
+          <span class="mat-tag">Carbon Steel</span>
+          <span class="mat-tag">A36 · A572 · A514</span>
+          <span class="mat-tag">A500 HSS</span>
+          <span class="mat-tag">AR400 Wear Plate</span>
+          <span class="mat-tag">Stainless 304 · 316</span>
+          <span class="mat-tag">Aluminum 6061 · 5052</span>
+          <span class="mat-tag">Galvanized</span>
         </div>
       </div>
     </div>
@@ -624,14 +686,39 @@
     </div>
   </div>
 
-  <!-- CTA -->
+  <!-- CONTACT -->
   <div class="cta-band" id="contact">
     <h2>Plan for Your Product's Success</h2>
     <p>Be confident in the parts produced for you. Send us a drawing and we'll get back with an accurate, competitive quote — typically within one business day.</p>
-    <div class="cta-buttons">
-      <a href="mailto:info@dswcutting.com" class="btn-primary">Request a Quote</a>
-      <a href="https://www.dswcutting.com/get-a-quote/" class="btn-outline" target="_blank">Submit RFQ Online</a>
-    </div>
+
+    <form name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="max-width:680px;margin:2.5rem auto 0;text-align:left;">
+      <input type="hidden" name="form-name" value="quote-request">
+      <p style="display:none;"><input name="bot-field"></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Name *</label>
+          <input type="text" name="name" required style="width:100%;background:#0d1526;border:1px solid #1e2d45;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Company</label>
+          <input type="text" name="company" style="width:100%;background:#0d1526;border:1px solid #1e2d45;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Email *</label>
+          <input type="email" name="email" required style="width:100%;background:#0d1526;border:1px solid #1e2d45;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Phone</label>
+          <input type="tel" name="phone" style="width:100%;background:#0d1526;border:1px solid #1e2d45;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+      </div>
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Tell us about your project</label>
+        <textarea name="message" rows="4" style="width:100%;background:#0d1526;border:1px solid #1e2d45;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;resize:vertical;box-sizing:border-box;"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;cursor:pointer;border:none;font-family:inherit;font-size:0.875rem;">Send Quote Request</button>
+    </form>
+
     <div class="contact-row">
       <div class="contact-item">
         <span class="contact-label">Location</span>
