@@ -9,18 +9,33 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --navy:   #141c2e;
-      --navy-2: #1b2540;
-      --navy-3: #243050;
-      --blue:   #0ea5e9;
-      --blue-light: #38bdf8;
-      --blue-dim: rgba(56,189,248,0.15);
-      --text:   #f1f5f9;
-      --muted:  #a8b8cc;
-      --border: rgba(255,255,255,0.10);
-      --rule:   1px solid rgba(255,255,255,0.10);
-      --light-bg: #1e2d45;
-      --lighter-bg: #243554;
+      /* Dark sections (hero, capabilities, gallery, materials) */
+      --navy:        #141c2e;
+      --navy-2:      #1b2540;
+      --navy-3:      #243050;
+      --text:        #f1f5f9;
+      --muted:       #a8b8cc;
+      --border:      rgba(255,255,255,0.10);
+      --rule:        1px solid rgba(255,255,255,0.10);
+
+      /* DSW Brand */
+      --brand:       #2a669f;
+      --brand-light: #5b9fd4;   /* brand blue lightened for dark bg use */
+      --blue:        #2a669f;
+      --blue-light:  #5b9fd4;
+      --blue-dim:    rgba(42,102,159,0.15);
+
+      /* Light sections (stats, partner, promise, contact) */
+      --white:       #ffffff;
+      --off-white:   #f4f7fb;
+      --dark-text:   #1e2d3d;
+      --dark-muted:  #4e6070;
+      --dark-border: rgba(0,0,0,0.08);
+      --dark-rule:   1px solid rgba(0,0,0,0.08);
+
+      /* Compat aliases */
+      --light-bg:    #f4f7fb;
+      --lighter-bg:  #eaf0f7;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: var(--navy); color: var(--text); font-family: 'Inter', sans-serif; }
@@ -98,24 +113,24 @@
 
     /* STATS BAR */
     .stats-bar {
-      background: var(--light-bg);
-      border-bottom: var(--rule);
+      background: var(--white);
+      border-bottom: var(--dark-rule);
       display: flex; justify-content: center;
     }
     .stat {
       padding: 1.75rem 4.5rem; text-align: center;
-      border-right: var(--rule);
+      border-right: var(--dark-rule);
     }
     .stat:last-child { border-right: none; }
-    .stat-num { font-size: 1.75rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 0.35rem; }
-    .stat-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .stat-num { font-size: 1.75rem; font-weight: 700; color: var(--brand); line-height: 1; margin-bottom: 0.35rem; }
+    .stat-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dark-muted); }
 
-    /* PARTNER SECTION */
-    .partner-section { background: var(--lighter-bg); padding: 4.5rem 3rem; }
+    /* PARTNER SECTION — white */
+    .partner-section { background: var(--white); padding: 4.5rem 3rem; border-bottom: var(--dark-rule); }
     .partner-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .partner-text h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.01em; }
-    .partner-text p { color: var(--muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 1.25rem; }
-    .partner-text a { color: var(--blue-light); font-size: 0.85rem; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+    .partner-text h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.01em; color: var(--dark-text); }
+    .partner-text p { color: var(--dark-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .partner-text a { color: var(--brand); font-size: 0.85rem; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
     .partner-text a:hover { text-decoration: underline; }
 
     /* PROCESS */
@@ -215,7 +230,7 @@
     .cap-cta:hover { background: #c44d2a; }
 
     /* GALLERY */
-    .gallery-bg { background: var(--light-bg); }
+    .gallery-bg { background: var(--navy-2); }
     .gallery-header { padding: 3.5rem 3rem 2rem; max-width: 1200px; margin: 0 auto; }
     .photo-grid {
       display: grid;
@@ -232,10 +247,10 @@
     .photo-grid .span-2 { grid-column: span 2; }
 
     /* PROMISE */
-    .promise-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); }
-    .promise-item { background: var(--navy-2); padding: 1.75rem 1.5rem; }
-    .promise-icon { height: 40px; width: auto; margin-bottom: 1rem; opacity: 0.85; }
-    .promise-text { font-size: 0.82rem; font-weight: 500; color: var(--muted); line-height: 1.5; }
+    .promise-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--dark-border); }
+    .promise-item { background: var(--off-white); padding: 1.75rem 1.5rem; text-align: center; }
+    .promise-icon { height: 40px; width: auto; margin-bottom: 1rem; opacity: 1; }
+    .promise-text { font-size: 0.82rem; font-weight: 600; color: var(--dark-text); line-height: 1.5; }
 
     /* INDUSTRIES */
     .ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
@@ -246,17 +261,17 @@
 
     /* CTA BAND */
     .cta-band {
-      background: var(--lighter-bg);
-      border-top: var(--rule);
+      background: var(--off-white);
+      border-top: var(--dark-rule);
       padding: 5rem 3rem; text-align: center;
     }
-    .cta-band h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.015em; }
-    .cta-band p { color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .cta-band h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.015em; color: var(--dark-text); }
+    .cta-band p { color: var(--dark-muted); margin-bottom: 2.5rem; font-size: 0.95rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; }
     .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .contact-row { display: flex; justify-content: center; gap: 4rem; margin-top: 3rem; padding-top: 3rem; border-top: var(--rule); }
+    .contact-row { display: flex; justify-content: center; gap: 4rem; margin-top: 3rem; padding-top: 3rem; border-top: var(--dark-rule); }
     .contact-item { text-align: center; }
-    .contact-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-light); display: block; margin-bottom: 0.4rem; }
-    .contact-val { font-size: 0.875rem; color: var(--muted); }
+    .contact-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brand); display: block; margin-bottom: 0.4rem; }
+    .contact-val { font-size: 0.875rem; color: var(--dark-muted); }
 
     /* MATERIALS — full-bleed section */
     .mat-section {
@@ -412,9 +427,9 @@
   </div>
 
   <!-- PROMISE OF EXCELLENCE -->
-  <div style="border-top: var(--rule);">
+  <div style="background:var(--white);border-top: var(--dark-rule);border-bottom:var(--dark-rule);">
     <div style="max-width:1200px;margin:0 auto;padding:2.25rem 3rem;">
-      <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Our Promise of Excellence</div>
+      <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--brand);margin-bottom:1.25rem;">Our Promise of Excellence</div>
       <div class="promise-grid">
         <div class="promise-item"><img src="icons/On-Time-Fulfillment.svg" class="promise-icon" alt=""><div class="promise-text">On-Time Fulfillment</div></div>
         <div class="promise-item"><img src="icons/Competitive-Pricing.svg" class="promise-icon" alt=""><div class="promise-text">Competitive Pricing</div></div>
@@ -447,11 +462,12 @@
         <span class="cap-spec-pill">2 Material Towers</span>
         <span class="cap-spec-pill">Lights-Out Production</span>
         <span class="cap-spec-pill">Up to 1" Plate</span>
+        <span class="cap-spec-pill">2× Messer Plasma</span>
         <span class="cap-spec-pill">Plasma to 2"</span>
         <span class="cap-spec-pill">Carbon · Stainless · Aluminum</span>
       </div>
       <div class="cap-desc">
-        Six Mitsubishi Fiber Laser systems — 6kW, 8kW, and 10kW — with AI-assisted cutting condition optimization that adapts in real time for consistent edge quality across every material and thickness. Two automated material towers enable <strong>lights-out production</strong>: autonomous material handling and overnight runs without operators on the floor. From light gauge sheet to <strong>1" plate</strong> in Carbon, Stainless, and Aluminum. High-definition Plasma cutting handles Carbon plate to <strong>2" thick</strong>.
+        Six Mitsubishi Fiber Laser systems — 6kW, 8kW, and 10kW — with AI-assisted cutting condition optimization that adapts in real time for consistent edge quality across every material and thickness. Two automated material towers enable <strong>lights-out production</strong>: autonomous material handling and overnight runs without operators on the floor. Two Messer plasma cutters handle Carbon plate to <strong>2" thick</strong> with bevel capability. Light gauge sheet to <strong>1" plate</strong> in Carbon, Stainless, and Aluminum.
       </div>
       <a href="#contact" class="cap-cta">Contact Us</a>
     </div>
@@ -705,25 +721,25 @@
       <p style="display:none;"><input name="bot-field"></p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Name *</label>
-          <input type="text" name="name" required style="width:100%;background:#1e2d45;border:1px solid #2d4060;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Name *</label>
+          <input type="text" name="name" required style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
         </div>
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Company</label>
-          <input type="text" name="company" style="width:100%;background:#1e2d45;border:1px solid #2d4060;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Company</label>
+          <input type="text" name="company" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
         </div>
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Email *</label>
-          <input type="email" name="email" required style="width:100%;background:#1e2d45;border:1px solid #2d4060;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Email *</label>
+          <input type="email" name="email" required style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
         </div>
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Phone</label>
-          <input type="tel" name="phone" style="width:100%;background:#1e2d45;border:1px solid #2d4060;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Phone</label>
+          <input type="tel" name="phone" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
         </div>
       </div>
       <div style="margin-bottom:1.25rem;">
-        <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-light);margin-bottom:0.4rem;">Tell us about your project</label>
-        <textarea name="message" rows="4" style="width:100%;background:#1e2d45;border:1px solid #2d4060;padding:0.75rem 1rem;color:#e2e8f0;font-size:0.875rem;font-family:inherit;resize:vertical;box-sizing:border-box;"></textarea>
+        <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Tell us about your project</label>
+        <textarea name="message" rows="4" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;resize:vertical;box-sizing:border-box;"></textarea>
       </div>
       <button type="submit" class="btn-primary" style="width:100%;cursor:pointer;border:none;font-family:inherit;font-size:0.875rem;">Send Message</button>
     </form>
