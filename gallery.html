@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Shop — DSW Cutting</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="dsw-logo.svg" alt="DSW Cutting" style="height:36px;"></a>
+    <div class="nav-links">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="gallery.html">The Shop</a>
+      <a href="industries.html">Industries</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="section-eyebrow">Our Facility</span>
+    <h1>The Shop</h1>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="gallery-bg">
+    <div class="gallery-header">
+      <h2 class="section-title">185,000 Sq Ft of Capability</h2>
+    </div>
+    <div class="photo-grid">
+      <img src="photos/plasma-burst-dark.jpg" class="span-2" alt="Plasma cutting — symmetric spark burst" loading="lazy">
+      <img src="photos/tube-laser-chuck-frontal.jpg" alt="Dairuike tube laser chuck — square tube" loading="lazy">
+      <img src="photos/tube-laser-gold-arc.jpg" alt="Tube laser — golden long-exposure spark arc" loading="lazy">
+      <img src="photos/laser-orange-cone.jpg" alt="Laser head — orange fireball cone" loading="lazy">
+      <img src="photos/shop-4.jpg" alt="Mitsubishi laser — radial spark burst" loading="lazy">
+      <img src="photos/warehouse-cranes-stock.jpg" class="span-2" alt="Warehouse — yellow overhead cranes, tube and bar stock inventory" loading="lazy">
+      <img src="photos/dsw-siegmund-table.jpg" alt="Welder at DSW Siegmund fixture table" loading="lazy">
+      <img src="photos/welder-low-angle.jpg" alt="Welder — low angle, blue arc, spark shower" loading="lazy">
+      <img src="photos/robot-weld-blue.jpg" alt="Robotic weld arm — blue arc, dark" loading="lazy">
+      <img src="photos/welder-starburst.jpg" alt="Welder — long exposure blue starburst arc" loading="lazy">
+      <img src="photos/laser-tower-suction.jpg" class="span-2" alt="Laser tower automation suction array" loading="lazy">
+      <img src="photos/worker-hands-parts.jpg" alt="Worker hands — laser-cut C-channel parts" loading="lazy">
+      <img src="photos/bent-angles-stack.jpg" alt="Stacked bent angle brackets" loading="lazy">
+      <img src="photos/channel-parts-wall.jpg" alt="Wall of channel parts — production at scale" loading="lazy">
+      <img src="photos/shop-2.jpg" alt="FARO CMM precision inspection" loading="lazy">
+      <img src="photos/drone-aerial-1.jpg" class="span-2" alt="Parts staging — overhead view" loading="lazy">
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Ready to Talk?</h2>
+    <p>Send us your drawings and let's build something together.</p>
+    <div class="cta-buttons">
+      <a href="contact.html" class="btn-primary">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2025 DSW Cutting &nbsp;&middot;&nbsp; Birmingham, Alabama</span>
+    <div class="footer-links">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="gallery.html">The Shop</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.dswcutting.com" target="_blank" rel="noopener">dswcutting.com</a>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <span id="lb-close">&#x2715;</span>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    // Gallery lightbox
+    document.querySelectorAll('.photo-grid img').forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('lb-img').src = img.src;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>

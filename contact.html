@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — DSW Cutting</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="dsw-logo.svg" alt="DSW Cutting" style="height:36px;"></a>
+    <div class="nav-links">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="gallery.html">The Shop</a>
+      <a href="industries.html">Industries</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Contact Us</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="section-eyebrow">Get In Touch</span>
+    <h1>Let's Talk</h1>
+  </div>
+
+  <!-- CONTACT FORM & INFO -->
+  <div class="cta-band">
+    <h2>Let's Build Something Together.</h2>
+    <p>We're committed to being a long-term partner in your supply chain — not just a transaction. Reach out and let's talk about what you're building.</p>
+
+    <form name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="max-width:680px;margin:2.5rem auto 0;text-align:left;">
+      <input type="hidden" name="form-name" value="quote-request">
+      <p style="display:none;"><input name="bot-field"></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Name *</label>
+          <input type="text" name="name" required style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Company</label>
+          <input type="text" name="company" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Email *</label>
+          <input type="email" name="email" required style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Phone</label>
+          <input type="tel" name="phone" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+        </div>
+      </div>
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Tell us about your project</label>
+        <textarea name="message" rows="4" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;resize:vertical;box-sizing:border-box;"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;cursor:pointer;border:none;font-family:inherit;font-size:0.875rem;">Send Message</button>
+    </form>
+
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <div class="contact-val">Birmingham, Alabama</div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <div class="contact-val">info@dswcutting.com</div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Phone</span>
+        <div class="contact-val">(000) 000-0000</div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Facility</span>
+        <div class="contact-val">185,000 sq ft &nbsp;·&nbsp; Since 2004</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>&copy; 2025 DSW Cutting &nbsp;&middot;&nbsp; Birmingham, Alabama</span>
+    <div class="footer-links">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="gallery.html">The Shop</a>
+      <a href="industries.html">Industries</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://www.dswcutting.com" target="_blank" rel="noopener">dswcutting.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
