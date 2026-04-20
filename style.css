@@ -176,11 +176,11 @@ nav {
 .process-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
 /* SECTION COMMON */
-.section { padding: 5rem 3rem; }
+.section { padding: 5rem 3rem; background: var(--white); color: var(--dark-text); }
 .section-inner { max-width: 1200px; margin: 0 auto; }
 .section-eyebrow { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.75rem; display: block; border-left: 2px solid var(--blue-light); padding-left: 0.75rem; }
 .section-title { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 0.75rem; }
-.section-body { color: var(--muted); line-height: 1.8; font-size: 1rem; max-width: 600px; margin-bottom: 3rem; }
+.section-body { color: var(--dark-muted); line-height: 1.8; font-size: 1rem; max-width: 600px; margin-bottom: 3rem; }
 
 /* PAGE HERO */
 .page-hero {
@@ -269,6 +269,7 @@ nav {
 /* GALLERY */
 .gallery-bg { background: var(--navy-2); }
 .gallery-header { padding: 3.5rem 3rem 2rem; max-width: 1200px; margin: 0 auto; }
+.gallery-header .section-title { color: var(--text); }
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -290,10 +291,11 @@ nav {
 .promise-text { font-size: 0.82rem; font-weight: 600; color: var(--dark-text); line-height: 1.5; }
 
 /* INDUSTRIES */
-.ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
-.ind-card { background: var(--navy-2); padding: 2rem 1.75rem; }
-.ind-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.6rem; }
-.ind-rule { width: 28px; height: 2px; background: var(--blue-light); margin-bottom: 0.9rem; }
+.ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--dark-border); }
+.ind-card { background: var(--white); padding: 2rem 1.75rem; }
+.ind-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--dark-text); }
+.ind-desc { font-size: 0.82rem; color: var(--dark-muted); line-height: 1.65; }
+.ind-rule { width: 28px; height: 2px; background: var(--brand); margin-bottom: 0.9rem; }
 .ind-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
 
 /* CTA BAND */
@@ -450,7 +452,7 @@ footer a:hover { color: var(--muted); }
 
   /* INDUSTRIES */
   .section { padding: 2.5rem 1.25rem; }
-  .ind-grid { grid-template-columns: 1fr; gap: 1px; }
+  .ind-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
 
   /* CONTACT / CTA */
   .cta-band { padding: 3rem 1.25rem; }
