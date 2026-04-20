@@ -291,7 +291,7 @@ nav {
 .promise-text { font-size: 0.82rem; font-weight: 600; color: var(--dark-text); line-height: 1.5; }
 
 /* INDUSTRIES */
-.ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--dark-border); }
+.ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--dark-border); }
 .ind-card { background: var(--white); padding: 2rem 1.75rem; }
 .ind-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.6rem; color: var(--dark-text); }
 .ind-desc { font-size: 0.82rem; color: var(--dark-muted); line-height: 1.65; }
