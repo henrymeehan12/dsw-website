@@ -5,9 +5,307 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Shop — DSW Cutting</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ── SHOP PAGE STYLES ──────────────────────────────────── */
+
+    /* Facility overview — white bg, editorial 2-col */
+    .facility-overview {
+      background: var(--white);
+      padding: 6rem 3rem;
+    }
+
+    .facility-overview .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .facility-overview .col-left .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .facility-overview .col-left h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      font-optical-sizing: auto;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .facility-overview .col-left p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .facility-overview .col-left p:last-child { margin-bottom: 0; }
+
+    /* Stat grid — 4 stats */
+    .shop-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .shop-stat {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--lighter-bg);
+    }
+
+    .shop-stat .number {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      font-optical-sizing: auto;
+      color: var(--dark);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .shop-stat .number em {
+      font-style: normal;
+      font-size: 0.55em;
+      font-weight: 500;
+      color: var(--brand);
+    }
+
+    .shop-stat .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark-muted);
+    }
+
+    /* Photo grid — curated 9 photos */
+    .shop-photos {
+      background: var(--lighter-bg);
+      padding: 5rem 3rem;
+    }
+
+    .shop-photos .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .shop-photos .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .shop-photos .section-header .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .shop-photos .section-header h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      font-optical-sizing: auto;
+      color: var(--dark);
+    }
+
+    .curated-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .curated-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .curated-grid img:hover { opacity: 0.9; }
+
+    .curated-grid .span-full {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+
+    /* How We Run the Floor */
+    .shop-ops {
+      background: var(--dark);
+      padding: 6rem 3rem;
+      color: var(--text);
+    }
+
+    .shop-ops .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .shop-ops .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-light);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .shop-ops h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      font-optical-sizing: auto;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .shop-ops .intro {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 3.5rem;
+    }
+
+    .ops-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .ops-step {
+      background: var(--dark);
+      padding: 2rem 1.75rem;
+      position: relative;
+    }
+
+    .ops-step .step-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brand-light);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .ops-step h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+      font-optical-sizing: auto;
+    }
+
+    .ops-step p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* Bottom narrative — light bg */
+    .shop-culture {
+      background: var(--white);
+      padding: 6rem 3rem;
+    }
+
+    .shop-culture .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .shop-culture img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .shop-culture .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .shop-culture h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      font-optical-sizing: auto;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .shop-culture p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .shop-culture p:last-child { margin-bottom: 0; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .facility-overview .inner,
+      .shop-culture .inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ops-grid { grid-template-columns: 1fr 1fr; }
+      .curated-grid { grid-template-columns: 1fr 1fr; }
+      .curated-grid .span-full { aspect-ratio: 16/9; }
+      .facility-overview, .shop-photos, .shop-ops, .shop-culture { padding: 4rem 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .ops-grid { grid-template-columns: 1fr; }
+      .shop-stats { grid-template-columns: 1fr 1fr; }
+      .curated-grid { grid-template-columns: 1fr; }
+      .curated-grid .span-full { aspect-ratio: 4/3; }
+    }
+
+  </style>
 </head>
 <body>
 
@@ -25,34 +323,153 @@
 
   <!-- PAGE HERO -->
   <div class="page-hero">
-    <span class="section-eyebrow">Our Facility</span>
+    <span class="section-eyebrow">Birmingham, Alabama</span>
     <h1>The Shop</h1>
   </div>
 
-  <!-- GALLERY -->
-  <div class="gallery-bg">
-    <div class="gallery-header">
-      <h2 class="section-title">185,000 Sq Ft of Capability</h2>
+  <!-- ── FACILITY OVERVIEW ──────────────────────────────────── -->
+  <section class="facility-overview">
+    <div class="inner">
+      <div class="col-left">
+        <span class="eyebrow">Our Facility</span>
+        <h2>185,000 square feet built for production at scale.</h2>
+        <p>
+          DSW's facility sits in Birmingham's industrial corridor — the same district that 
+          helped build American infrastructure for over a century. Since 2004, we've 
+          expanded that footprint into one of the most capable fabrication floors in the region.
+        </p>
+        <p>
+          Six fiber lasers. Three tube laser machines. Five Mitsubishi press brakes and a 
+          robotic bending cell. Four OTC Daihen weld robots alongside manual weld stations. 
+          Automation towers that load, run, and unload sheet stock through the night. All of 
+          it supported by a FARO arm CMM and laser scanner for first-article and in-process 
+          inspection.
+        </p>
+        <p>
+          We run two shifts, nearly 24 hours a day — because our customers' programs don't 
+          slow down, and neither do we.
+        </p>
+      </div>
+      <div class="col-right">
+        <div class="shop-stats">
+          <div class="shop-stat">
+            <div class="number">185<em>K</em></div>
+            <div class="label">Square Feet</div>
+          </div>
+          <div class="shop-stat">
+            <div class="number">~200</div>
+            <div class="label">Employees</div>
+          </div>
+          <div class="shop-stat">
+            <div class="number">6</div>
+            <div class="label">Fiber Lasers</div>
+          </div>
+          <div class="shop-stat">
+            <div class="number">2</div>
+            <div class="label">Shifts Daily</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="photo-grid">
-      <img src="photos/plasma-burst-dark.jpg" class="span-2" alt="Plasma cutting — symmetric spark burst" loading="lazy">
-      <img src="photos/tube-laser-chuck-frontal.jpg" alt="Dairuike tube laser chuck — square tube" loading="lazy">
-      <img src="photos/tube-laser-gold-arc.jpg" alt="Tube laser — golden long-exposure spark arc" loading="lazy">
-      <img src="photos/laser-orange-cone.jpg" alt="Laser head — orange fireball cone" loading="lazy">
-      <img src="photos/shop-4.jpg" alt="Mitsubishi laser — radial spark burst" loading="lazy">
-      <img src="photos/warehouse-cranes-stock.jpg" class="span-2" alt="Warehouse — yellow overhead cranes, tube and bar stock inventory" loading="lazy">
-      <img src="photos/dsw-siegmund-table.jpg" alt="Welder at DSW Siegmund fixture table" loading="lazy">
-      <img src="photos/welder-low-angle.jpg" alt="Welder — low angle, blue arc, spark shower" loading="lazy">
-      <img src="photos/robot-weld-blue.jpg" alt="Robotic weld arm — blue arc, dark" loading="lazy">
-      <img src="photos/welder-starburst.jpg" alt="Welder — long exposure blue starburst arc" loading="lazy">
-      <img src="photos/laser-tower-suction.jpg" class="span-2" alt="Laser tower automation suction array" loading="lazy">
-      <img src="photos/worker-hands-parts.jpg" alt="Worker hands — laser-cut C-channel parts" loading="lazy">
-      <img src="photos/bent-angles-stack.jpg" alt="Stacked bent angle brackets" loading="lazy">
-      <img src="photos/channel-parts-wall.jpg" alt="Wall of channel parts — production at scale" loading="lazy">
-      <img src="photos/shop-2.jpg" alt="FARO CMM precision inspection" loading="lazy">
-      <img src="photos/drone-aerial-1.jpg" class="span-2" alt="Parts staging — overhead view" loading="lazy">
+  </section>
+
+  <!-- ── CURATED PHOTOS ─────────────────────────────────────── -->
+  <section class="shop-photos">
+    <div class="inner">
+      <div class="section-header">
+        <span class="eyebrow">Inside the Facility</span>
+        <h2>A look at how we work.</h2>
+      </div>
+      <div class="curated-grid">
+        <img src="photos/plasma-burst-dark.jpg" alt="Fiber laser plasma burst" loading="lazy">
+        <img src="photos/tube-laser-chuck-frontal.jpg" alt="Tube laser chuck — square tube" loading="lazy">
+        <img src="photos/tube-laser-gold-arc.jpg" alt="Tube laser — long-exposure arc" loading="lazy">
+        <img src="photos/warehouse-cranes-stock.jpg" alt="Warehouse — overhead cranes, tube and bar stock" loading="lazy" class="span-full">
+        <img src="photos/dsw-siegmund-table.jpg" alt="Welder at Siegmund fixture table" loading="lazy">
+        <img src="photos/robot-weld-blue.jpg" alt="OTC Daihen robotic weld cell" loading="lazy">
+        <img src="photos/worker-hands-parts.jpg" alt="Laser-cut parts — production run" loading="lazy">
+        <img src="photos/laser-tower-suction.jpg" alt="Laser tower automation suction array" loading="lazy" class="span-full">
+        <img src="photos/shop-2.jpg" alt="FARO CMM precision inspection" loading="lazy">
+        <img src="photos/bent-angles-stack.jpg" alt="Stacked bent angle brackets" loading="lazy">
+        <img src="photos/finished-parts-pallets.jpg" alt="Finished parts staged on pallets" loading="lazy">
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- ── HOW WE RUN THE FLOOR ───────────────────────────────── -->
+  <section class="shop-ops">
+    <div class="inner">
+      <span class="eyebrow">Operations</span>
+      <h2>How We Run the Floor</h2>
+      <p class="intro">
+        Every part that leaves DSW runs through the same disciplined process — from raw 
+        material receipt to final inspection. No shortcuts, no exceptions.
+      </p>
+      <div class="ops-grid">
+        <div class="ops-step">
+          <span class="step-num">01 — Material</span>
+          <h3>Material In</h3>
+          <p>Sheet, plate, tube, and structural stock received, logged, and staged by job. Carbon steel, stainless, and aluminum managed separately.</p>
+        </div>
+        <div class="ops-step">
+          <span class="step-num">02 — Cutting</span>
+          <h3>Laser & Plasma</h3>
+          <p>Fiber laser and high-definition plasma cells run nested programs from engineering. Automation towers handle unmanned sheet cycling for high-volume jobs.</p>
+        </div>
+        <div class="ops-step">
+          <span class="step-num">03 — Forming</span>
+          <h3>Press Brake & Roll</h3>
+          <p>Five Mitsubishi press brakes — including a robot-assisted cell for repeat bends — plus a Davi plate roller for curved and rolled profiles.</p>
+        </div>
+        <div class="ops-step">
+          <span class="step-num">04 — Welding</span>
+          <h3>Robotic & Manual</h3>
+          <p>Four OTC Daihen weld robots handle high-volume assemblies. Manual weld stations cover complex fixtures and lower-volume structural work.</p>
+        </div>
+        <div class="ops-step">
+          <span class="step-num">05 — Secondary</span>
+          <h3>Finish & Hardware</h3>
+          <p>Spot welding, rivet installation, and tapping arm (to 16mm) for hardware insertion. Parts leave ready for assembly or finishing.</p>
+        </div>
+        <div class="ops-step">
+          <span class="step-num">06 — Inspection</span>
+          <h3>CMM & Dimensional</h3>
+          <p>FARO arm CMM and laser scanner on-site. First-article inspection documented and provided on request. PPAP capability available.</p>
+        </div>
+        <div class="ops-step">
+          <span class="step-num">07 — Jig & Fixture</span>
+          <h3>In-House Tooling</h3>
+          <p>DSW designs and builds its own jigs and fixtures internally. Faster setup, tighter repeatability, no outsourcing wait.</p>
+        </div>
+        <div class="ops-step">
+          <span class="step-num">08 — Ship</span>
+          <h3>Packaged & Out</h3>
+          <p>Parts staged, labeled, and shipped to customer spec. Partner vendor services available for powder coat, plating, and assembly integration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM & CULTURE ─────────────────────────────────────── -->
+  <section class="shop-culture">
+    <div class="inner">
+      <img src="photos/dsw-team-3.jpg" alt="DSW team on the shop floor">
+      <div>
+        <span class="eyebrow">The Team</span>
+        <h2>The technology is only part of the story.</h2>
+        <p>
+          DSW has roughly 200 people on the floor. Experienced operators who know the 
+          machines, program managers who know your account, and leadership that came up 
+          through fabrication — not through a spreadsheet.
+        </p>
+        <p>
+          When a program changes mid-run or a tight-tolerance part needs a second look, 
+          you're talking to someone who can actually do something about it. That's been 
+          true since 2004 and it's still true today.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- CTA BAND -->
   <div class="cta-band">
@@ -72,7 +489,6 @@
       <a href="industries.html">Industries</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-      <a href="https://www.dswcutting.com" target="_blank" rel="noopener">dswcutting.com</a>
     </div>
   </footer>
 
@@ -83,8 +499,7 @@
   </div>
 
   <script>
-    // Gallery lightbox
-    document.querySelectorAll('.photo-grid img').forEach(img => {
+    document.querySelectorAll('.curated-grid img').forEach(img => {
       img.addEventListener('click', () => {
         document.getElementById('lb-img').src = img.src;
         document.getElementById('lightbox').classList.add('active');
