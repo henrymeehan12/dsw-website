@@ -385,13 +385,15 @@ nav {
 .work-rail {
   display: flex;
   gap: 1.25rem;
-  padding: 0.25rem 3rem 0.5rem;
+  padding: 0.25rem clamp(1.25rem, 4vw, 3rem) 1.5rem;
   width: max-content;
+  /* Ensure right side has trailing space after last card */
+  padding-right: clamp(1.25rem, 4vw, 3rem);
 }
 
 /* Cards */
 .work-card {
-  width: 360px;
+  width: 380px;
   flex-shrink: 0;
   background: var(--white);
   border: 1px solid #E6E8EB;
@@ -435,7 +437,7 @@ nav {
 }
 
 .work-card-body {
-  padding: 1.5rem;
+  padding: 1.5rem 1.75rem 1.75rem;
 }
 
 .work-card-title {
