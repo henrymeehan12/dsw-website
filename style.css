@@ -350,6 +350,10 @@ nav {
   justify-content: space-between;
   gap: 2rem;
   margin-bottom: 2.5rem;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+  max-width: 1260px;
+  margin-inline: auto;
+  margin-bottom: 2.5rem;
 }
 
 .work-rail-eyebrow {
