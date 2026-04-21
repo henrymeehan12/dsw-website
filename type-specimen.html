@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSW Type Specimen — v2</title>
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+
+    /* ── SPECIMEN PAGE LAYOUT ─────────────────────────────── */
+    body { background: var(--off-white); }
+
+    .specimen-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: var(--space-8) var(--gutter);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-4);
+    }
+
+    .specimen-header h1 {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-regular);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .specimen-header p {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--muted);
+    }
+
+    /* Specimen sections */
+    .spec-section {
+      padding: var(--space-12) var(--gutter);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .spec-section:last-child { border-bottom: none; }
+
+    .spec-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .spec-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--muted);
+      margin-top: var(--space-2);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    /* Navy section */
+    .spec-section--navy {
+      background: var(--navy);
+    }
+
+    /* White section */
+    .spec-section--white {
+      background: var(--white);
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--ember);
+      margin: var(--space-3) 0;
+    }
+
+    /* ── HEADING STYLES ──────────────────────────────────── */
+    .dsw-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: var(--weight-semibold);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--navy);
+      font-optical-sizing: auto;
+    }
+
+    .dsw-h1--white { color: var(--white); }
+    .dsw-h1--brand { color: var(--brand); }
+
+    .dsw-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: var(--weight-semibold);
+      line-height: var(--leading-tight);
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      font-optical-sizing: auto;
+    }
+
+    .dsw-h2--white { color: var(--white); }
+
+    .dsw-h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+      font-weight: var(--weight-medium);
+      line-height: var(--leading-snug);
+      letter-spacing: -0.01em;
+      color: var(--navy);
+    }
+
+    .dsw-body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: var(--weight-regular);
+      line-height: var(--leading-normal);
+      color: var(--steel);
+      max-width: 65ch;
+    }
+
+    .dsw-body--white { color: rgba(255,255,255,0.78); }
+
+    .dsw-lead {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-regular);
+      line-height: 1.5;
+      color: var(--steel);
+      max-width: 60ch;
+    }
+
+    .dsw-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .dsw-eyebrow--ember { color: var(--ember); }
+    .dsw-eyebrow--muted { color: var(--muted); }
+
+    /* Mono stat — big number + label */
+    .stat-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: var(--weight-semibold);
+      line-height: 1;
+      letter-spacing: var(--tracking-tight);
+      color: var(--white);
+    }
+
+    .stat-number span {
+      font-size: 0.5em;
+      font-weight: var(--weight-medium);
+      color: var(--ember);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .stat-row {
+      display: flex;
+      gap: var(--space-10);
+      flex-wrap: wrap;
+    }
+
+    /* Mono spec strip */
+    .spec-strip {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      gap: var(--space-3);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .spec-strip .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--ember);
+      flex-shrink: 0;
+    }
+
+    /* Spec pill variants */
+    .pill-row {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      margin-top: var(--space-3);
+    }
+
+    .pill {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      padding: 0.3em 0.75em;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+    }
+
+    .pill--brand {
+      color: var(--brand);
+      background: rgba(42, 102, 159, 0.08);
+      border: 1px solid rgba(42, 102, 159, 0.22);
+    }
+
+    .pill--ember {
+      color: var(--ember);
+      background: rgba(217, 119, 6, 0.08);
+      border: 1px solid rgba(217, 119, 6, 0.22);
+    }
+
+    .pill--steel {
+      color: var(--muted);
+      background: rgba(107, 122, 141, 0.08);
+      border: 1px solid rgba(107, 122, 141, 0.22);
+    }
+
+    /* CTA Button specimens */
+    .btn-row {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-4);
+      align-items: center;
+    }
+
+    .btn-primary {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.01em;
+      color: var(--white);
+      background: var(--brand);
+      border: none;
+      border-radius: var(--radius-md);
+      padding: 0.75em 1.75em;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--duration-fast) var(--ease-out);
+    }
+
+    .btn-primary:hover { background: var(--navy); }
+
+    .btn-ghost {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.01em;
+      color: var(--brand);
+      background: transparent;
+      border: 1px solid var(--brand);
+      border-radius: var(--radius-md);
+      padding: 0.75em 1.75em;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--duration-fast) var(--ease-out),
+                  color var(--duration-fast) var(--ease-out);
+    }
+
+    .btn-ghost:hover {
+      background: var(--brand);
+      color: var(--white);
+    }
+
+    .btn-ghost--white {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.45);
+    }
+
+    .btn-ghost--white:hover {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--white);
+    }
+
+    /* Horizontal rule accent */
+    .rule-ember {
+      border: none;
+      border-top: 2px solid var(--ember);
+      width: 48px;
+      margin: var(--space-3) 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="specimen-header">
+    <h1>DSW Cutting — Type Specimen v2.0</h1>
+    <p>Inter Display · IBM Plex Mono · 2026-04-20</p>
+  </div>
+
+  <!-- ── SECTION 1: HERO-SCALE HEADING ─────────────────────── -->
+  <div class="spec-section spec-section--white">
+    <p class="spec-label">H1 — Hero Display (56–80px, tight tracking)</p>
+
+    <span class="dsw-eyebrow">EST. 2004 · BIRMINGHAM, AL · 185,000 SQ FT</span>
+    <h1 class="dsw-h1">Your Long-Term<br>Fabrication Partner.</h1>
+    <p class="spec-meta">font-size: clamp(3rem, 6vw, 5rem) · weight: 600 · tracking: -0.03em · optical-sizing: auto</p>
+
+    <div style="margin-top: var(--space-8);">
+      <span class="dsw-eyebrow dsw-eyebrow--muted">Alternate: short, punchy</span>
+      <h1 class="dsw-h1">Built to Run.<br>Built to Last.</h1>
+    </div>
+
+    <div style="margin-top: var(--space-8);">
+      <span class="dsw-eyebrow dsw-eyebrow--muted">Alternate: statement</span>
+      <h1 class="dsw-h1">185,000 Square Feet.<br>One Point of Contact.</h1>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: H1 ON NAVY ──────────────────────────────── -->
+  <div class="spec-section spec-section--navy">
+    <p class="spec-label" style="color: var(--muted);">H1 — On Navy Background</p>
+    <span class="dsw-eyebrow dsw-eyebrow--ember">Capabilities</span>
+    <h1 class="dsw-h1 dsw-h1--white">Precision at Scale.<br>Every Part. Every Time.</h1>
+    <hr class="rule-ember">
+    <p class="dsw-body dsw-body--white" style="margin-top: var(--space-3);">
+      Six fiber lasers. Three tube lasers. Robotic press brakes and OTC Daihen weld cells. 
+      DSW runs two shifts, nearly 24 hours a day — so your program never waits.
+    </p>
+    <div class="btn-row">
+      <a href="#" class="btn-primary">See Our Capabilities</a>
+      <a href="#" class="btn-ghost btn-ghost--white">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: H2 + BODY ───────────────────────────────── -->
+  <div class="spec-section spec-section--white">
+    <p class="spec-label">H2 + Body Copy (36–48px heading, 17px body)</p>
+
+    <span class="dsw-eyebrow">Partnership</span>
+    <h2 class="dsw-h2">Built on Partnership.<br>Proven by Performance.</h2>
+    <hr class="rule-ember">
+    <p class="dsw-lead" style="margin-top: var(--space-3);">
+      We're not a job shop. We're an extension of your engineering team — embedded in your 
+      supply chain, accountable to your program, and invested in your outcome.
+    </p>
+    <p class="dsw-body" style="margin-top: var(--space-3);">
+      Since 2004, DSW has grown by earning long-term relationships with manufacturers who 
+      need more than a vendor. They need a partner with the technology to keep pace and the 
+      team to be accountable. That's what we deliver — on time, to spec, every run.
+    </p>
+
+    <div style="margin-top: var(--space-8);">
+      <span class="dsw-eyebrow">Alternate H2 — Capability-led</span>
+      <h2 class="dsw-h2">From Raw Coil<br>to Finished Assembly.</h2>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: H3 + SPECS ─────────────────────────────── -->
+  <div class="spec-section">
+    <p class="spec-label">H3 + Mono Spec Treatment</p>
+
+    <span class="dsw-eyebrow">Laser Cutting & Plasma</span>
+    <h3 class="dsw-h3">Fiber Laser & High-Definition Plasma</h3>
+    <div class="pill-row">
+      <span class="pill pill--brand">4 × 60″ × 120″ BED</span>
+      <span class="pill pill--brand">2 × 72″ × 157″ BED</span>
+      <span class="pill pill--brand">2″ MAX PLATE</span>
+      <span class="pill pill--steel">CARBON · STAINLESS · ALUMINUM</span>
+    </div>
+
+    <div style="margin-top: var(--space-6);">
+      <span class="dsw-eyebrow">Tube Laser</span>
+      <h3 class="dsw-h3">3-Machine Tube Laser Cell</h3>
+      <div class="pill-row">
+        <span class="pill pill--brand">40 FT MAX INBOUND</span>
+        <span class="pill pill--brand">8.625″ OD ROUND</span>
+        <span class="pill pill--steel">ROUND · SQUARE · STRUCTURAL · I-BEAM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: STATS BAND ─────────────────────────────── -->
+  <div class="spec-section spec-section--navy">
+    <p class="spec-label" style="color: var(--muted);">Stats Band — Mono Data Strip</p>
+
+    <!-- Option A: big numbers -->
+    <div class="stat-row">
+      <div class="stat-block">
+        <div class="stat-number">185<span>K</span></div>
+        <div class="stat-label">Square Feet</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">20<span>+</span></div>
+        <div class="stat-label">Years in Business</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">2<span>″</span></div>
+        <div class="stat-label">Max Plate Thickness</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">40<span>ft</span></div>
+        <div class="stat-label">Max Tube Length</div>
+      </div>
+    </div>
+
+    <!-- Option B: compact mono strip -->
+    <div style="margin-top: var(--space-10);">
+      <p class="spec-label" style="color: var(--muted);">Option B — Compact mono strip (under hero)</p>
+      <div class="spec-strip">
+        <span>185,000 SQ FT</span>
+        <span class="dot"></span>
+        <span>Est. 2004</span>
+        <span class="dot"></span>
+        <span>2″ Max Plate</span>
+        <span class="dot"></span>
+        <span>40 FT Max Tube</span>
+        <span class="dot"></span>
+        <span>Birmingham, AL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 6: EYEBROW + PILL SYSTEM ─────────────────── -->
+  <div class="spec-section spec-section--white">
+    <p class="spec-label">Eyebrows, Pills, Spec Tags — Mono System</p>
+
+    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+      <div>
+        <p class="spec-meta" style="margin-bottom: var(--space-1);">Brand eyebrow</p>
+        <span class="dsw-eyebrow">Capabilities · Laser Cutting</span>
+      </div>
+      <div>
+        <p class="spec-meta" style="margin-bottom: var(--space-1);">Ember eyebrow (accent — use sparingly)</p>
+        <span class="dsw-eyebrow dsw-eyebrow--ember">Featured Project</span>
+      </div>
+      <div>
+        <p class="spec-meta" style="margin-bottom: var(--space-1);">Muted eyebrow</p>
+        <span class="dsw-eyebrow dsw-eyebrow--muted">Since 2004 · Birmingham, AL</span>
+      </div>
+      <div>
+        <p class="spec-meta" style="margin-bottom: var(--space-1);">Spec pills</p>
+        <div class="pill-row">
+          <span class="pill pill--brand">YOLOv11 · 76.9% mAP</span>
+          <span class="pill pill--ember">PPAP Capable</span>
+          <span class="pill pill--steel">AWS D1.1 Certified</span>
+          <span class="pill pill--brand">FARO Arm CMM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 7: BUTTON SYSTEM ──────────────────────────── -->
+  <div class="spec-section">
+    <p class="spec-label">Button System</p>
+
+    <div>
+      <p class="spec-meta" style="margin-bottom: var(--space-2);">On light background</p>
+      <div class="btn-row">
+        <a href="#" class="btn-primary">Contact Us</a>
+        <a href="#" class="btn-ghost">See Our Capabilities</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="spec-section spec-section--navy">
+    <p class="spec-label" style="color: var(--muted);">On navy background</p>
+    <div class="btn-row">
+      <a href="#" class="btn-primary">Contact Us</a>
+      <a href="#" class="btn-ghost btn-ghost--white">See Our Capabilities</a>
+    </div>
+  </div>
+
+  <!-- ── SECTION 8: FULL PARAGRAPH BLOCK ───────────────────── -->
+  <div class="spec-section spec-section--white">
+    <p class="spec-label">Body Copy — Full Paragraph Block</p>
+
+    <div class="container-narrow" style="padding: 0;">
+      <span class="dsw-eyebrow">About DSW</span>
+      <h2 class="dsw-h2" style="margin-bottom: var(--space-3);">Birmingham Steel, Since 2004.</h2>
+      <p class="dsw-lead">
+        DSW Cutting started in a knife shop in Birmingham's industrial district. Today it's 
+        185,000 square feet of fiber laser, tube laser, robotic forming, and precision welding — 
+        all under one roof.
+      </p>
+      <p class="dsw-body" style="margin-top: var(--space-3);">
+        Under the leadership of CEO Chris McIlvaine, DSW has built its reputation on a simple 
+        principle: do the work right, stand behind it, and treat customers like partners. That 
+        philosophy — paired with a serious investment in modern fabrication technology — is why 
+        manufacturers across trucking, agriculture, power infrastructure, and industrial equipment 
+        keep coming back.
+      </p>
+      <p class="dsw-body" style="margin-top: var(--space-3);">
+        We run two shifts, nearly 24 hours a day. Our FARO arm CMM and laser scanner mean 
+        first-article approval is a process, not a prayer. And when your program scales, we scale 
+        with it — without making you start over with a new vendor.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
