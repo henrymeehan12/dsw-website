@@ -481,24 +481,85 @@ nav {
 }
 
 /* PARTNER SECTION — white */
-.partner-section { background: var(--white); padding: 4.5rem 3rem; border-bottom: var(--dark-rule); }
+.partner-section { background: var(--white); padding: 5rem 3rem; }
 .partner-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.partner-text h2 { font-size: 2.1rem; font-weight: 700; margin-bottom: 1.25rem; letter-spacing: -0.015em; color: var(--dark-text); }
-.partner-text p { color: var(--dark-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 1.25rem; }
-.partner-text a { color: var(--brand); font-size: 0.85rem; text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; }
+.partner-text h2 { font-family: 'Inter', sans-serif; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 600; margin-bottom: 1.25rem; letter-spacing: -0.025em; font-optical-sizing: auto; color: #0D2B4E; line-height: 1.2; }
+.partner-text p { color: var(--dark-muted); line-height: 1.8; font-size: 1rem; margin-bottom: 1.25rem; }
+.partner-text a { color: var(--brand); font-size: 0.875rem; text-decoration: none; font-weight: 500; }
 .partner-text a:hover { text-decoration: underline; }
+.partner-photo img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
 
-/* PROCESS */
-.process-list { display: flex; flex-direction: column; gap: 0; border: var(--rule); }
+/* PROCESS TIMELINE */
+.process-section { background: #0D2B4E; padding: 5rem 3rem; }
+.process-inner { max-width: 1200px; margin: 0 auto; }
+.process-header { margin-bottom: 4rem; }
+.process-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.45);
+  display: block; margin-bottom: 0.75rem;
+}
+.process-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 600;
+  letter-spacing: -0.025em; font-optical-sizing: auto;
+  color: #ffffff; line-height: 1.15;
+}
+.process-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+.timeline-line {
+  position: absolute;
+  top: 19px;
+  left: calc(20px); right: calc(20px);
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  z-index: 0; overflow: hidden;
+}
+.timeline-line-fill {
+  height: 100%; width: 0%;
+  background: var(--brand);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.timeline-line-fill.animated { width: 100%; }
+.timeline-step { position: relative; z-index: 1; }
+.timeline-node {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #0D2B4E; border: 2px solid var(--brand);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s ease;
+}
+.timeline-step:hover .timeline-node { background: var(--brand); }
+.timeline-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em;
+  color: var(--brand); transition: color 0.3s ease;
+}
+.timeline-step:hover .timeline-num { color: #ffffff; }
+.timeline-step-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem; font-weight: 600;
+  letter-spacing: -0.01em; font-optical-sizing: auto;
+  color: #ffffff; margin-bottom: 0.75rem;
+}
+.timeline-step-desc { font-size: 0.9375rem; line-height: 1.7; color: rgba(255,255,255,0.60); }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 380ms ease-out, transform 380ms ease-out; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Legacy process list (unused but kept for safety) */
+.process-list { display: flex; flex-direction: column; gap: 0; }
 .process-item {
   display: flex; align-items: flex-start; gap: 1.5rem;
   padding: 1.5rem 2rem; border-bottom: var(--rule);
 }
 .process-item:last-child { border-bottom: none; }
-.process-num {
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
-  color: var(--blue-light); min-width: 24px; padding-top: 2px;
-}
+.process-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: var(--blue-light); min-width: 24px; padding-top: 2px; }
 .process-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; }
 .process-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 

@@ -259,38 +259,65 @@
     <div class="partner-inner">
       <div class="partner-text">
         <h2>Built on Partnership.<br>Proven by Performance.</h2>
-        <p>At DSW, we understand the demands of today's rapidly changing business environment. We don't see ourselves as a vendor — we see ourselves as an extension of your manufacturing operation. A partner who shows up, delivers, and grows with you.</p>
+        <p>At DSW, we don't see ourselves as a vendor — we see ourselves as an extension of your manufacturing operation. A partner who shows up, delivers, and grows with you.</p>
         <p>Since 2004, we've built long-term relationships with customers across heavy equipment, agriculture, data centers, and power systems. We've continually invested in the latest technology so our partners stay competitive. Our sales team has manufacturing experience — giving you real guidance on materials, process selection, and DFM at the quoting stage, not just a price.</p>
         <a href="capabilities.html">View our capabilities &rarr;</a>
       </div>
-      <div>
-        <img src="photos/warehouse-cranes-stock.jpg" alt="DSW facility — overhead cranes and material inventory" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;margin-bottom:1.5px;">
-        <div class="process-list">
-          <div class="process-item">
-            <div class="process-num">01</div>
-            <div>
-              <div class="process-title">Generate a Competitive Quote</div>
-              <div class="process-desc">Our automated estimating system provides accurate, competitive pricing quickly. Sales engineers with manufacturing backgrounds review every quote before it goes out.</div>
-            </div>
+      <div class="partner-photo">
+        <img src="photos/warehouse-cranes-stock.jpg" alt="DSW facility — overhead cranes and material inventory">
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS TIMELINE -->
+  <section class="process-section">
+    <div class="process-inner">
+      <div class="process-header">
+        <span class="process-eyebrow">How It Works</span>
+        <h2 class="process-title">From First Contact to Final Part.</h2>
+      </div>
+
+      <div class="process-timeline">
+        <!-- Connecting line -->
+        <div class="timeline-line">
+          <div class="timeline-line-fill"></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="timeline-step reveal">
+          <div class="timeline-node">
+            <span class="timeline-num">01</span>
           </div>
-          <div class="process-item">
-            <div class="process-num">02</div>
-            <div>
-              <div class="process-title">Quality Assurance</div>
-              <div class="process-desc">Every new part goes through first-piece verification before full production. Our QA process ensures the parts we make are exactly what you ordered.</div>
-            </div>
+          <div class="timeline-content">
+            <h3 class="timeline-step-title">Get a Quote</h3>
+            <p class="timeline-step-desc">Send your drawings. Our sales engineers — people with real manufacturing backgrounds — review every quote before it goes out. Accurate pricing, fast turnaround.</p>
           </div>
-          <div class="process-item">
-            <div class="process-num">03</div>
-            <div>
-              <div class="process-title">Produce and Deliver</div>
-              <div class="process-desc">Full-service production from raw stock to finished part — laser, bend, weld, and finish under one roof. One point of contact from order to delivery.</div>
-            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step reveal">
+          <div class="timeline-node">
+            <span class="timeline-num">02</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-step-title">First-Piece Verification</h3>
+            <p class="timeline-step-desc">Every new part runs through first-piece inspection before full production starts. FARO arm CMM confirms dimensions. No surprises on the production run.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step reveal">
+          <div class="timeline-node">
+            <span class="timeline-num">03</span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-step-title">Produce &amp; Deliver</h3>
+            <p class="timeline-step-desc">Laser, bend, weld, and finish — all under one roof, one point of contact. Parts staged and shipped to your spec. We own the outcome from order to delivery.</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- PROMISE OF EXCELLENCE -->
   <div style="background:var(--white);border-top: var(--dark-rule);border-bottom:var(--dark-rule);">
@@ -327,6 +354,40 @@
       <a href="https://www.dswcutting.com" target="_blank" rel="noopener">dswcutting.com</a>
     </div>
   </footer>
+
+  <script>
+    // Scroll-triggered reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('is-visible'), delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    // Stagger timeline steps
+    document.querySelectorAll('.timeline-step').forEach((el, i) => {
+      el.dataset.delay = i * 120;
+      observer.observe(el);
+    });
+
+    // Animate the connecting line when timeline is in view
+    const lineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            document.querySelector('.timeline-line-fill')?.classList.add('animated');
+          }, 200);
+          lineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const timeline = document.querySelector('.process-timeline');
+    if (timeline) lineObserver.observe(timeline);
+  </script>
 
 </body>
 </html>
