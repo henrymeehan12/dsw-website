@@ -395,10 +395,16 @@ nav {
 .work-rail {
   display: flex;
   gap: 1.25rem;
-  padding: 0.25rem clamp(1.25rem, 4vw, 3rem) 1.5rem;
+  padding: 0.25rem 0 1.5rem clamp(1.25rem, 4vw, 3rem);
   width: max-content;
-  /* Ensure right side has trailing space after last card */
-  padding-right: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Trailing spacer — padding-right on max-content flex gets ignored */
+.work-rail::after {
+  content: '';
+  display: block;
+  min-width: clamp(1.25rem, 4vw, 3rem);
+  flex-shrink: 0;
 }
 
 /* Cards */
