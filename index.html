@@ -516,58 +516,52 @@
       const dotsEl    = document.getElementById('work-dots');
       if (!rail) return;
 
-      const cards     = Array.from(rail.querySelectorAll('.work-card'));
-      const INTERVAL  = 30000; // 30 seconds
-      const GAP       = 20;    // matches 1.25rem gap in CSS
+      const cards    = Array.from(rail.querySelectorAll('.work-card'));
+      const VISIBLE  = 4;   // cards shown at once
+      const GAP      = 20;  // px, matches 1.25rem gap
+      const INTERVAL = 30000;
+      const TOTAL    = cards.length;
+      const STEPS    = Math.max(0, TOTAL - VISIBLE); // how many slides exist
 
-      let currentIdx  = 0;
-      let autoTimer   = null;
-      let paused      = false;
+      let currentIdx = 0;
+      let autoTimer  = null;
+      let paused     = false;
+      let cardWidth  = 0;
 
-      // Calculate how many cards fit in viewport
-      function visibleCount() {
-        const trackW = track.offsetWidth;
-        const cardW  = cards[0]?.offsetWidth || 380;
-        return Math.max(1, Math.floor((trackW + GAP) / (cardW + GAP)));
+      // Size cards so exactly VISIBLE fit perfectly inside the track
+      function sizeCards() {
+        const railPad = parseFloat(getComputedStyle(rail).paddingLeft) || 0;
+        const available = track.offsetWidth - railPad * 2;
+        cardWidth = (available - GAP * (VISIBLE - 1)) / VISIBLE;
+        cards.forEach(c => c.style.width = cardWidth + 'px');
       }
 
-      // Max steps = total cards - visible cards
-      function maxSteps() {
-        return Math.max(0, cards.length - visibleCount());
-      }
-
-      // Build dots
       function buildDots() {
         dotsEl.innerHTML = '';
-        const steps = maxSteps();
-        for (let i = 0; i <= steps; i++) {
+        for (let i = 0; i <= STEPS; i++) {
           const d = document.createElement('button');
           d.className = 'work-rail-dot' + (i === currentIdx ? ' active' : '');
           d.setAttribute('aria-label', `Slide ${i + 1}`);
-          d.addEventListener('click', () => goTo(i));
+          d.addEventListener('click', () => { goTo(i); startTimer(); });
           dotsEl.appendChild(d);
         }
       }
 
       function updateDots() {
-        dotsEl.querySelectorAll('.work-rail-dot').forEach((d, i) => {
-          d.classList.toggle('active', i === currentIdx);
-        });
+        dotsEl.querySelectorAll('.work-rail-dot').forEach((d, i) =>
+          d.classList.toggle('active', i === currentIdx));
       }
 
       function goTo(idx) {
-        const steps   = maxSteps();
-        currentIdx    = Math.max(0, Math.min(idx, steps));
-        const cardW   = cards[0]?.offsetWidth || 380;
-        const offset  = currentIdx * (cardW + GAP);
+        currentIdx = Math.max(0, Math.min(idx, STEPS));
+        const offset = currentIdx * (cardWidth + GAP);
         rail.style.transform = `translateX(-${offset}px)`;
         updateDots();
       }
 
       function advance() {
         if (paused) return;
-        const steps = maxSteps();
-        goTo(currentIdx >= steps ? 0 : currentIdx + 1);
+        goTo(currentIdx >= STEPS ? 0 : currentIdx + 1);
       }
 
       function startTimer() {
@@ -575,27 +569,27 @@
         autoTimer = setInterval(advance, INTERVAL);
       }
 
-      // Controls
       prevBtn?.addEventListener('click', () => {
-        goTo(currentIdx <= 0 ? maxSteps() : currentIdx - 1);
+        goTo(currentIdx <= 0 ? STEPS : currentIdx - 1);
         startTimer();
       });
       nextBtn?.addEventListener('click', () => {
-        goTo(currentIdx >= maxSteps() ? 0 : currentIdx + 1);
+        goTo(currentIdx >= STEPS ? 0 : currentIdx + 1);
         startTimer();
       });
 
-      // Pause on hover
       track.addEventListener('mouseenter', () => { paused = true; });
       track.addEventListener('mouseleave', () => { paused = false; });
 
-      // Init
-      buildDots();
-      goTo(0);
-      startTimer();
+      function init() {
+        sizeCards();
+        buildDots();
+        goTo(0);
+        startTimer();
+      }
 
-      // Rebuild on resize
-      window.addEventListener('resize', () => { buildDots(); goTo(0); });
+      init();
+      window.addEventListener('resize', () => { sizeCards(); buildDots(); goTo(0); });
     })();
 
     // ── Scroll-triggered reveal ───────────────────────────
