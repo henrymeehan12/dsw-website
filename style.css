@@ -685,6 +685,114 @@ nav {
 .ind-rule { width: 28px; height: 2px; background: var(--brand); margin-bottom: 0.9rem; }
 .ind-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
 
+/* INDUSTRIES STRIP — Step 8 */
+.industries-strip {
+  background: var(--white);
+  padding: 5rem 3rem;
+}
+.industries-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.industries-header {
+  margin-bottom: 3rem;
+}
+.industries-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--brand);
+  display: block; margin-bottom: 0.75rem;
+}
+.industries-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600; letter-spacing: -0.025em; font-optical-sizing: auto;
+  color: #0D2B4E; line-height: 1.2;
+}
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.industry-tile {
+  background: var(--white);
+  padding: 2rem 1.75rem;
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s ease;
+}
+.industry-tile:hover { background: #F5F7FA; }
+.industry-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: opacity 0.2s, filter 0.2s;
+}
+.industry-tile:hover .industry-icon { opacity: 1; filter: none; }
+.industry-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem; font-weight: 600;
+  letter-spacing: -0.01em; font-optical-sizing: auto;
+  color: #0D2B4E; margin-bottom: 0.4rem;
+}
+.industry-desc {
+  font-size: 0.85rem; line-height: 1.55;
+  color: var(--text-mid);
+}
+
+/* CREDENTIALS BAR — Step 9 */
+.credentials-bar {
+  background: #F5F7FA;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 3rem;
+}
+.credentials-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.credentials-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+  display: block; margin-bottom: 2rem;
+}
+.credentials-grid {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.credential-item {
+  flex: 1;
+  min-width: 140px;
+  padding: 0 2rem;
+}
+.credential-item:first-child { padding-left: 0; }
+.credential-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.credential-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.375rem; font-weight: 600;
+  letter-spacing: -0.02em; font-optical-sizing: auto;
+  color: #0D2B4E; line-height: 1; margin-bottom: 0.3rem;
+}
+.credential-sub {
+  font-size: 0.8rem; color: var(--muted); line-height: 1.4;
+}
+.credential-divider {
+  width: 1px; height: 3rem;
+  background: var(--rule); flex-shrink: 0;
+}
+
 /* CTA BAND */
 .cta-band {
   background: var(--off-white);
@@ -849,6 +957,12 @@ footer a:hover { color: var(--muted); }
 
   /* CONTACT / CTA */
   .cta-band { padding: 3rem 1.25rem; }
+  .industries-strip { padding: 3.5rem 1.25rem; }
+  .industries-grid { grid-template-columns: 1fr 1fr; }
+  .credentials-bar { padding: 2.5rem 1.25rem; }
+  .credentials-grid { flex-wrap: wrap; gap: 1.5rem; }
+  .credential-item { min-width: 120px; padding: 0; }
+  .credential-divider { display: none; }
   .cta-band h2 { font-size: 1.5rem; }
   .contact-row { flex-wrap: wrap; gap: 1.5rem; }
   .contact-item { flex: 1 1 45%; }
