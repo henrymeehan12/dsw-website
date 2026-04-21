@@ -229,7 +229,7 @@ body {
   color: var(--ember);
 }
 
-/* Mono spec tag — "40 FT · MAX TUBE INBOUND" */
+/* Mono spec tag — "40 FT · MAX TUBE OUTBOUND" */
 .spec-tag {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
