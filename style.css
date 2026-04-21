@@ -271,8 +271,14 @@ nav {
   min-height: 560px;
 }
 
+/* Wide tile spans full bottom row (col 2+3) */
+.cap-tile--wide {
+  grid-column: 2 / 4;
+  aspect-ratio: 21/9;
+}
+
 /* Standard tiles */
-.cap-tile:not(.cap-tile--tall) {
+.cap-tile:not(.cap-tile--tall):not(.cap-tile--wide) {
   aspect-ratio: 16/10;
 }
 
