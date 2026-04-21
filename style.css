@@ -687,6 +687,29 @@ nav {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+/* Wide content card for materials section */
+.cap-content--wide {
+  width: 56%;
+}
+
+/* Material tag groups inside cap-content */
+.cap-mat-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.cap-mat-group {}
+.cap-mat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-light, #5B9FD4);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 .cap-cta {
   display: inline-block;
   background: #dd5932; color: #fff;
