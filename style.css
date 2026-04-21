@@ -272,10 +272,16 @@ nav {
   min-height: 560px;
 }
 
-/* Wide tile spans ALL columns — full-width banner */
+/* Wide tile spans ALL columns — full-width banner (unused, kept) */
 .cap-tile--wide {
   grid-column: 1 / -1;
   aspect-ratio: 21/7;
+}
+
+/* Wide2 — spans cols 2+3 only (paired with quality tile in col 1) */
+.cap-tile--wide2 {
+  grid-column: 2 / 4;
+  aspect-ratio: unset;
 }
 
 /* Standard tiles */
