@@ -192,8 +192,8 @@
       </div>
       <a href="contact.html" class="cap-grid-link">Start a Conversation &rarr;</a>
     </div>
-    <div class="work-rail-track">
-      <div class="work-rail">
+    <div class="work-rail-track" id="work-rail-track">
+      <div class="work-rail" id="work-rail">
 
         <!-- Card 1: Heavy Equipment Brackets -->
         <article class="work-card">
@@ -282,6 +282,16 @@
         </article>
 
       </div>
+    </div>
+    <!-- Carousel controls -->
+    <div class="work-rail-controls">
+      <button class="work-rail-btn" id="work-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="work-rail-btn" id="work-next" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="work-rail-dots" id="work-dots"></div>
     </div>
   </section>
 
@@ -489,17 +499,108 @@
   </footer>
 
   <script>
-    // Mobile nav hamburger
+    // ── Mobile nav ────────────────────────────────────────
     const hamburger = document.getElementById('nav-hamburger');
-    const navLinks = document.getElementById('nav-links');
+    const navLinks  = document.getElementById('nav-links');
     hamburger?.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       navLinks.classList.toggle('open');
     });
 
-    // Scroll-triggered reveal
+    // ── Work Rail Carousel ────────────────────────────────
+    (function() {
+      const rail      = document.getElementById('work-rail');
+      const track     = document.getElementById('work-rail-track');
+      const prevBtn   = document.getElementById('work-prev');
+      const nextBtn   = document.getElementById('work-next');
+      const dotsEl    = document.getElementById('work-dots');
+      if (!rail) return;
+
+      const cards     = Array.from(rail.querySelectorAll('.work-card'));
+      const INTERVAL  = 30000; // 30 seconds
+      const GAP       = 20;    // matches 1.25rem gap in CSS
+
+      let currentIdx  = 0;
+      let autoTimer   = null;
+      let paused      = false;
+
+      // Calculate how many cards fit in viewport
+      function visibleCount() {
+        const trackW = track.offsetWidth;
+        const cardW  = cards[0]?.offsetWidth || 380;
+        return Math.max(1, Math.floor((trackW + GAP) / (cardW + GAP)));
+      }
+
+      // Max steps = total cards - visible cards
+      function maxSteps() {
+        return Math.max(0, cards.length - visibleCount());
+      }
+
+      // Build dots
+      function buildDots() {
+        dotsEl.innerHTML = '';
+        const steps = maxSteps();
+        for (let i = 0; i <= steps; i++) {
+          const d = document.createElement('button');
+          d.className = 'work-rail-dot' + (i === currentIdx ? ' active' : '');
+          d.setAttribute('aria-label', `Slide ${i + 1}`);
+          d.addEventListener('click', () => goTo(i));
+          dotsEl.appendChild(d);
+        }
+      }
+
+      function updateDots() {
+        dotsEl.querySelectorAll('.work-rail-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === currentIdx);
+        });
+      }
+
+      function goTo(idx) {
+        const steps   = maxSteps();
+        currentIdx    = Math.max(0, Math.min(idx, steps));
+        const cardW   = cards[0]?.offsetWidth || 380;
+        const offset  = currentIdx * (cardW + GAP);
+        rail.style.transform = `translateX(-${offset}px)`;
+        updateDots();
+      }
+
+      function advance() {
+        if (paused) return;
+        const steps = maxSteps();
+        goTo(currentIdx >= steps ? 0 : currentIdx + 1);
+      }
+
+      function startTimer() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(advance, INTERVAL);
+      }
+
+      // Controls
+      prevBtn?.addEventListener('click', () => {
+        goTo(currentIdx <= 0 ? maxSteps() : currentIdx - 1);
+        startTimer();
+      });
+      nextBtn?.addEventListener('click', () => {
+        goTo(currentIdx >= maxSteps() ? 0 : currentIdx + 1);
+        startTimer();
+      });
+
+      // Pause on hover
+      track.addEventListener('mouseenter', () => { paused = true; });
+      track.addEventListener('mouseleave', () => { paused = false; });
+
+      // Init
+      buildDots();
+      goTo(0);
+      startTimer();
+
+      // Rebuild on resize
+      window.addEventListener('resize', () => { buildDots(); goTo(0); });
+    })();
+
+    // ── Scroll-triggered reveal ───────────────────────────
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           const delay = entry.target.dataset.delay || 0;
           setTimeout(() => entry.target.classList.add('is-visible'), delay);
@@ -508,13 +609,12 @@
       });
     }, { threshold: 0.15 });
 
-    // Stagger timeline steps
     document.querySelectorAll('.timeline-step').forEach((el, i) => {
       el.dataset.delay = i * 120;
       observer.observe(el);
     });
 
-    // Animate the connecting line when timeline is in view
+    // ── Timeline connecting line ──────────────────────────
     const lineObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
