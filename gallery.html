@@ -23,7 +23,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
-      align-items: start;
+      align-items: stretch;
+    }
+    .facility-overview .col-right {
+      display: flex;
+      flex-direction: column;
     }
 
     .facility-overview .col-left .eyebrow {
@@ -62,6 +66,35 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Exterior photo below stats */
+    .shop-exterior-photo {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      flex: 1 1 auto;
+      min-height: 240px;
+    }
+    .shop-exterior-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .shop-exterior-photo .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 1.25rem;
+      background: linear-gradient(to top, rgba(14, 41, 84, 0.9), transparent);
+      color: #ffffff;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .shop-stat {
@@ -311,11 +344,11 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo"><img src="dsw-wordmark-light.svg" alt="DSW Cutting" style="height:36px;"></a>
+    <a href="index.html" class="nav-logo"><img src="dsw-graphic-logo-blue.png" alt="DSW Cutting" style="height:36px;"></a>
     <div class="nav-links" id="nav-links">
       <a href="capabilities.html">Capabilities</a>
+      <a href="work.html">Work</a>
       <a href="gallery.html" class="active">The Shop</a>
-      <a href="industries.html">Industries</a>
       <a href="about.html">About</a>
     </div>
     <div class="nav-right">
@@ -344,11 +377,14 @@
           expanded that footprint into one of the most capable fabrication floors in the region.
         </p>
         <p>
-          Six fiber lasers. Three tube laser machines. Five Mitsubishi press brakes and a 
-          robotic bending cell. Four OTC Daihen weld robots alongside manual weld stations. 
-          Automation towers that load, run, and unload sheet stock through the night. All of 
-          it supported by a FARO arm CMM and laser scanner for first-article and in-process 
-          inspection.
+          Twelve fiber lasers under one roof. Eight flat cutters — seven Mitsubishi plus a
+          Bescutter Giga super-large-frame with a 3D bevel head. Four tube lasers — a BLM LT8,
+          Bescutter HyTube 7532, Bescutter Titan 12036D, and a newly added Bescutter Apex 3030.
+          Two Haas VF-3YT-50 machining centers add 5-axis CNC to the floor. Five Mitsubishi
+          press brakes and a robotic bending cell handle forming. Four OTC Daihen weld robots
+          run alongside manual weld stations. Automation towers load, run, and unload sheet
+          stock through the night — all supported by a FARO arm CMM and laser scanner for
+          first-article and in-process inspection.
         </p>
         <p>
           We run two shifts, nearly 24 hours a day — because our customers' programs don't 
@@ -358,7 +394,7 @@
       <div class="col-right">
         <div class="shop-stats">
           <div class="shop-stat">
-            <div class="number">230<em>K</em></div>
+            <div class="number">230,000</div>
             <div class="label">Square Feet</div>
           </div>
           <div class="shop-stat">
@@ -366,13 +402,17 @@
             <div class="label">Employees</div>
           </div>
           <div class="shop-stat">
-            <div class="number">6</div>
+            <div class="number">12</div>
             <div class="label">Fiber Lasers</div>
           </div>
           <div class="shop-stat">
             <div class="number">2</div>
             <div class="label">Shifts Daily</div>
           </div>
+        </div>
+        <div class="shop-exterior-photo">
+          <img src="photos/shop-exterior.jpg" alt="DSW Cutting facility exterior — Birmingham, AL">
+          <div class="caption">816 30th St N · Birmingham, AL</div>
         </div>
       </div>
     </div>
@@ -390,14 +430,6 @@
         <img src="photos/laser-plate-spark-orange.jpg" alt="Fiber laser cutting plate — orange spark burst" loading="lazy">
         <img src="photos/mitsubishi-laser-plate-sparks.jpg" alt="Mitsubishi fiber laser cutting plate — spark burst" loading="lazy">
         <img src="photos/fanuc-robot-press-brake.jpg" alt="FANUC R-2000iC robot arm — Diamond press brake cell" loading="lazy" class="span-full">
-        <img src="photos/welder-siegmund-close-sparks.jpg" alt="Welder on Siegmund table — close-up arc sparks, red curtain" loading="lazy">
-        <img src="photos/laser-suction-side.jpg" alt="Laser tower suction array — side low-angle view" loading="lazy">
-        <img src="photos/press-brake-die-red-clamp.jpg" alt="Press brake die with red clamp handle" loading="lazy">
-        <img src="photos/forklift-warehouse.jpg" alt="Forklift moving material — DSW warehouse floor" loading="lazy" class="span-full">
-        <img src="photos/welder-blue-radial-sparks.jpg" alt="Manual welder — blue arc, radial sparks" loading="lazy">
-        <img src="photos/otc-daihen-robot-sparks.jpg" alt="OTC Daihen robotic weld cell — close-up sparks" loading="lazy">
-        <img src="photos/bent-angles-bw-stack.jpg" alt="Stacked bent angle brackets — dramatic B&W" loading="lazy">
-        <img src="photos/hss-channel-stack.jpg" alt="Stacked HSS C-channel sections — geometric grid" loading="lazy" class="span-full">
       </div>
     </div>
   </section>
@@ -456,6 +488,22 @@
     </div>
   </section>
 
+  <!-- ── CURATED PHOTOS (part 2) ─────────────────────────────── -->
+  <section class="shop-photos">
+    <div class="inner">
+      <div class="curated-grid">
+        <img src="photos/welder-siegmund-close-sparks.jpg" alt="Welder on Siegmund table — close-up arc sparks, red curtain" loading="lazy">
+        <img src="photos/laser-suction-side.jpg" alt="Laser tower suction array — side low-angle view" loading="lazy">
+        <img src="photos/press-brake-die-red-clamp.jpg" alt="Press brake die with red clamp handle" loading="lazy">
+        <img src="photos/forklift-warehouse.jpg" alt="Forklift moving material — DSW warehouse floor" loading="lazy" class="span-full">
+        <img src="photos/welder-blue-radial-sparks.jpg" alt="Manual welder — blue arc, radial sparks" loading="lazy">
+        <img src="photos/otc-daihen-robot-sparks.jpg" alt="OTC Daihen robotic weld cell — close-up sparks" loading="lazy">
+        <img src="photos/bent-angles-bw-stack.jpg" alt="Stacked bent angle brackets — dramatic B&W" loading="lazy">
+        <img src="photos/hss-channel-stack.jpg" alt="Stacked HSS C-channel sections — geometric grid" loading="lazy" class="span-full">
+      </div>
+    </div>
+  </section>
+
   <!-- ── TEAM & CULTURE ─────────────────────────────────────── -->
   <section class="shop-culture">
     <div class="inner">
@@ -490,8 +538,8 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="dsw-wordmark-light.svg" alt="DSW Cutting" style="height:28px;filter:brightness(0) invert(1);opacity:0.7;">
-        <span class="footer-tagline">Precision Fabrication · Birmingham, AL · Est. 2004</span>
+        <img src="dsw-graphic-logo.png" alt="DSW Cutting" style="height:28px;opacity:0.7;">
+        <span class="footer-tagline">Precision Fabrication · Birmingham, AL · Founded 2004</span>
       </div>
       <div class="footer-social">
         <a href="https://www.instagram.com/dswcutting" target="_blank" rel="noopener" aria-label="Instagram">
@@ -506,8 +554,8 @@
       <span>&copy; 2026 DSW Cutting &nbsp;&middot;&nbsp; Birmingham, Alabama</span>
       <div class="footer-links">
         <a href="capabilities.html">Capabilities</a>
+        <a href="work.html">Work</a>
         <a href="gallery.html">The Shop</a>
-        <a href="industries.html">Industries</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </div>

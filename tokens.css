@@ -265,3 +265,49 @@ body {
 .section--sm {
   padding-block: var(--section-gap-sm);
 }
+
+
+/* =============================================================
+   v3.1 · 2026-05-20 · DSW BLUE INDUSTRIAL TOKENS
+   Additive layer for new pages. Surfaces now use DSW logo blue
+   instead of near-black, per brand sample from building photo.
+   Existing v2 tokens above remain authoritative until Phase 2
+   migrates all pages to v3.
+   ============================================================= */
+
+:root {
+
+  /* Dark backgrounds — storytelling & case study pages */
+  --color-bg-0:         #0E2954;   /* DSW deep navy — primary surface   */
+  --color-bg-1:         #1A3A6E;   /* DSW blue — elevated surface       */
+  --color-bg-2:         #234A85;   /* DSW blue lift — card / inset      */
+
+  /* Warm light backgrounds — reference & spec pages */
+  --color-bg-light:     #F4F2EE;   /* warm off-white                    */
+  --color-bg-light-alt: #E8E4DD;   /* paper / spec sheet                */
+
+  /* Ink — text colors */
+  --color-ink-0:        #FFFFFF;   /* pure white, sparing               */
+  --color-ink-1:        #E6E6E6;   /* primary on dark                   */
+  --color-ink-2:        #9CA3AC;   /* secondary on dark                 */
+  --color-ink-3:        #5A6168;   /* tertiary / labels                 */
+  --color-ink-dark:     #15181C;   /* primary text on light             */
+
+  /* Accents — sparing */
+  --color-steel-blue:   #3B69A8;   /* lighter blue — links, hover lift  */
+  --color-steel-deep:   #0E2954;   /* deepest navy — pressed / scrim    */
+  --color-ember:        #C9591F;   /* spark / heat accent               */
+  --color-ember-hot:    #F26B1F;   /* CTA / hover                       */
+
+  /* Rules */
+  --color-rule:         #2E4F82;   /* DSW blue rule — dividers on dark  */
+  --color-rule-light:   #D6D2CB;   /* dividers on light                 */
+
+  /* Motion (v3) */
+  --ease-out-3:    cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out-3: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:      120ms;
+  --dur-base:      220ms;
+  --dur-slow:      420ms;
+  --dur-reveal:    720ms;
+}
