@@ -1,4 +1,9 @@
 [build]
+  # The five case-study pages under work/ still contain [FILL: …] placeholders
+  # and unreleased customer detail. They stay in the repo but are stripped from
+  # the build so they are neither live nor indexable. Delete this command line
+  # (and nothing else) when the pages are finished and ready to publish.
+  command = "rm -rf work"
   publish = "."
 
 [build.processing]

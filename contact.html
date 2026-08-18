@@ -4,8 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — DSW Cutting</title>
+  <meta name="description" content="Send us your drawings for a quote. DSW Cutting, 816 30th St N, Birmingham, AL 35203 · 205.322.2021 · info@dswcutting.com">
+  <link rel="canonical" href="https://dswcutting.com/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DSW Cutting">
+  <meta property="og:title" content="Contact — DSW Cutting">
+  <meta property="og:description" content="Send us your drawings for a quote. DSW Cutting, 816 30th St N, Birmingham, AL 35203 · 205.322.2021 · info@dswcutting.com">
+  <meta property="og:url" content="https://dswcutting.com/contact.html">
+  <meta property="og:image" content="https://dswcutting.com/photos/mitsubishi-laser-sparks.jpg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,7 +30,7 @@
       <a href="about.html">About</a>
     </div>
     <div class="nav-right">
-      <a href="contact.html" class="nav-cta">Contact Us</a>
+      <a href="contact.html" class="nav-cta active" aria-current="page">Contact Us</a>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -38,7 +48,7 @@
     <h2>Let's Build Something Together.</h2>
     <p>We're committed to being a long-term partner in your supply chain — not just a transaction. Reach out and let's talk about what you're building.</p>
 
-    <form name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="max-width:680px;margin:2.5rem auto 0;text-align:left;">
+    <form name="quote-request" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" style="max-width:680px;margin:2.5rem auto 0;text-align:left;">
       <input type="hidden" name="form-name" value="quote-request">
       <p style="display:none;"><input name="bot-field"></p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">

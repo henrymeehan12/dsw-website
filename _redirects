@@ -18,8 +18,9 @@
 /contact/                   /contact.html         301
 /contact                    /contact.html         301
 
-/thank-you/                 /contact.html         301
-/thank-you                  /contact.html         301
+# /thank-you/ is a real page again (thank-you.html) and is where the contact
+# form now posts. No redirect rule — the static file serves it directly, and
+# pretty_urls resolves both /thank-you and /thank-you/.
 
 # The old site had a careers page; the new one does not yet.
 # 302 (temporary) on purpose — when a real careers page is added, browsers and
