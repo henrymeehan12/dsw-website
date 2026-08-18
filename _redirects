@@ -1,0 +1,28 @@
+# ── Legacy dswcutting.com (WordPress) URLs → new site ──────────────
+# Source: https://www.dswcutting.com/page-sitemap.xml, captured 2026-08-18
+# 301 = permanent (passes SEO value). 302 = temporary, see /careers below.
+# Netlify normalises trailing slashes, but both forms are listed to remove all doubt.
+
+/about-us/                  /about.html           301
+/about-us                   /about.html           301
+
+/services-and-equipment/    /capabilities.html    301
+/services-and-equipment     /capabilities.html    301
+
+/services/                  /capabilities.html    301
+/services                   /capabilities.html    301
+
+/get-a-quote/               /contact.html         301
+/get-a-quote                /contact.html         301
+
+/contact/                   /contact.html         301
+/contact                    /contact.html         301
+
+/thank-you/                 /contact.html         301
+/thank-you                  /contact.html         301
+
+# The old site had a careers page; the new one does not yet.
+# 302 (temporary) on purpose — when a real careers page is added, browsers and
+# search engines pick it up immediately instead of honouring a cached 301.
+/careers/                   /about.html           302
+/careers                    /about.html           302

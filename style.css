@@ -500,6 +500,8 @@ nav {
   color: #0D2B4E;
   margin-bottom: 0.5rem;
   line-height: 1.3;
+  /* Reserve two lines so one- and two-line titles keep the card bodies aligned */
+  min-height: calc(1.0625rem * 1.3 * 2);
 }
 
 .work-card-outcome {
