@@ -68,131 +68,13 @@
   </script>
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* ABOUT PAGE SPECIFIC */
-    .origin-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 580px;
-    }
-    .origin-photo {
-      position: relative;
-      overflow: hidden;
-    }
-    .origin-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-    }
-    .origin-text {
-      background: var(--navy-2);
-      padding: 5rem 4rem;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .origin-text h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 600;
-      letter-spacing: -0.025em; font-optical-sizing: auto; color: var(--text);
-      margin-bottom: 1.5rem; line-height: 1.15;
-    }
-    .origin-text p {
-      color: var(--muted); line-height: 1.8; font-size: 0.95rem;
-      margin-bottom: 1.25rem;
-    }
-    .origin-text p:last-child { margin-bottom: 0; }
-
-    /* BY THE NUMBERS */
-    .about-stats {
-      background: var(--white);
-      border-top: var(--dark-rule);
-      border-bottom: var(--dark-rule);
-    }
-    .about-stats-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      text-align: center;
-    }
-    .about-stat {
-      padding: 3rem 2rem;
-      border-right: var(--dark-rule);
-    }
-    .about-stat:last-child { border-right: none; }
-    .about-stat-num {
-      font-family: 'Inter', sans-serif;
-      font-size: 2.75rem; font-weight: 600;
-      color: var(--brand); display: block;
-      letter-spacing: -0.025em; font-optical-sizing: auto; line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-    .about-stat-label {
-      font-size: 0.7rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--dark-muted);
-      font-weight: 500;
-    }
-
-    /* PHILOSOPHY */
-    .philosophy-section {
-      background: var(--white);
-      padding: 5rem 3rem;
-    }
-    .philosophy-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 6rem; align-items: start;
-    }
-    .philosophy-left h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 600;
-      letter-spacing: -0.025em; font-optical-sizing: auto; color: var(--dark-text);
-      line-height: 1.15; margin-bottom: 1.5rem;
-    }
-    .philosophy-left p {
-      color: var(--dark-muted); line-height: 1.8;
-      font-size: 0.95rem; margin-bottom: 1.25rem;
-    }
-    .philosophy-right { padding-top: 0.5rem; }
-    .differentiator {
-      border-top: var(--dark-rule);
-      padding: 1.5rem 0;
-    }
-    .differentiator:last-child { border-bottom: var(--dark-rule); }
-    .differentiator-num {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem; letter-spacing: 0.2em;
-      color: var(--brand); font-weight: 600;
-      text-transform: uppercase; margin-bottom: 0.4rem;
-    }
-    .differentiator-title {
-      font-weight: 700; color: var(--dark-text);
-      font-size: 0.95rem; margin-bottom: 0.35rem;
-    }
-    .differentiator-body {
-      font-size: 0.85rem; color: var(--dark-muted);
-      line-height: 1.65;
-    }
-
-    /* MOBILE */
-    @media (max-width: 768px) {
-      .origin-section { grid-template-columns: 1fr; }
-      .origin-photo { height: 280px; }
-      .origin-text { padding: 2.5rem 1.25rem; }
-      .about-stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .about-stat { border-right: none; border-bottom: var(--dark-rule); }
-      .about-stat:nth-child(odd) { border-right: var(--dark-rule); }
-      .about-stat:last-child { border-bottom: none; }
-      .philosophy-section { padding: 3rem 1.25rem; }
-      .philosophy-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-  </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo"><img src="dsw-graphic-logo-blue.png" alt="DSW Cutting" style="height:36px;"></a>
+    <a href="index.html" class="nav-logo"><img src="dsw-graphic-logo-blue.png" alt="DSW Cutting"></a>
     <div class="nav-links" id="nav-links">
       <a href="capabilities.html">Capabilities</a>
       <a href="gallery.html">The Shop</a>
@@ -208,7 +90,7 @@
 
   <!-- PAGE HERO -->
   <div class="page-hero">
-    <div style="max-width:1100px; margin:0 auto;">
+    <div class="page-hero-inner">
       <span class="section-eyebrow">Birmingham, Alabama · Founded 2004</span>
       <h1>About DSW Cutting</h1>
     </div>
@@ -252,7 +134,7 @@
   <div class="philosophy-section">
     <div class="philosophy-inner">
       <div class="philosophy-left">
-        <span class="section-eyebrow" style="color:var(--brand);border-color:var(--brand);">How We Work</span>
+        <span class="section-eyebrow section-eyebrow--brand">How We Work</span>
         <h2>We're a Product Partner.<br>Not Just a Vendor.</h2>
         <p>Since 2004, DSW has been supporting manufacturers by producing the parts they need — accurately, affordably, and on time. That's the baseline. What separates us is everything that happens around the part.</p>
         <p>Our sales team has real manufacturing experience. When you call DSW, you're talking to someone who understands your drawing, your material, your tolerances — and can tell you if there's a better way to make it before the quote goes out. That's DFM guidance most shops don't offer.</p>
@@ -287,7 +169,7 @@
   <div class="cta-band">
     <h2>Ready to Talk?</h2>
     <p>Tell us what you're building and we'll set up a call.</p>
-    <div class="cta-buttons" style="width:100%;justify-content:center;display:flex;">
+    <div class="cta-buttons">
       <a href="contact.html" class="btn-primary">Contact Us</a>
     </div>
   </div>
@@ -296,7 +178,7 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="dsw-graphic-logo.png" alt="DSW Cutting" style="height:28px;opacity:0.7;">
+        <img src="dsw-graphic-logo.png" alt="DSW Cutting">
         <span class="footer-tagline">Precision Fabrication · Birmingham, AL · Founded 2004</span>
       </div>
       <div class="footer-social">

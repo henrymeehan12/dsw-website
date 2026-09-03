@@ -1,0 +1,27 @@
+:root {
+  /* Tokens these case-study pages used from the retired tokens.css */
+  --color-bg-0: #0E2954;
+  --color-bg-1: #1A3A6E;
+  --color-bg-2: #234A85;
+  --color-bg-light: #F4F2EE;
+  --color-bg-light-alt: #E8E4DD;
+  --color-ember: #C9591F;
+  --color-ember-hot: #F26B1F;
+  --color-ink-0: #FFFFFF;
+  --color-ink-1: #E6E6E6;
+  --color-ink-2: #9CA3AC;
+  --color-ink-3: #5A6168;
+  --color-ink-dark: #15181C;
+  --color-rule: #2E4F82;
+  --color-rule-light: #D6D2CB;
+  --color-steel-blue: #3B69A8;
+  --dur-base: 220ms;
+  --dur-fast: 120ms;
+  --dur-slow: 420ms;
+  --ease-out-3: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Menlo', monospace;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+

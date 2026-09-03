@@ -157,6 +157,15 @@ Checked and fine: capabilities sections stack photo-over-card; About and Contact
 `DSW-Capabilities-Sheet.pdf` (Letter, 2 pages, ~450 KB) at the repo root, linked from the capabilities page hero and the Quality section. **Built from the live capabilities copy** (chips + body text scraped from `capabilities.html`), so it says exactly what the site says: no brands, CNC "coming online Q4 2026", no certifications claimed. Source is `_tools/capabilities-sheet.html` (self-contained, fonts from Google, photos inlined) — re-render with Chrome print-to-PDF or Playwright after any capabilities copy change, and bump the "Rev." month in the header. `_tools/` is stripped from the Netlify build.
 Business context recorded for whoever edits this next: **DSW is not ISO certified** (Chris's call, tied to whether he wants to scale). The "AWS" welding credential stays deliberately unspecific. Neither the site nor the PDF claims any certification.
 
+### Session 11 — code cleanup (2026-09-03, **not yet committed**)
+
+Goal: same site, less code. Verified by pixel-diffing full-page screenshots of all 7 pages at 1280 px and iPhone 13 width, before vs after (lazy-loading stripped in both so image timing couldn't fake a diff). Every diff is one of the three intentional changes below; everything else is identical.
+1. **One stylesheet.** `tokens.css` is gone. It was 313 lines of which 22 tokens plus the `html`/`body` base rules and `.eyebrow` were actually in effect (its `:root` was mostly shadowed by a second `:root` in `style.css`). Those live at the top of `style.css` now; the two page-local `<style>` blocks in `about.html` and `gallery.html` (≈450 lines) moved into `style.css` under their own headers. 48 dead rules removed (`.promise-*`, `.mat-*`, `.ind-*`, `.credentials-*`, `.photo-grid`, `.section*`, …). All `.blue-light/.text-mid/.dark/.border-light` aliases collapsed onto their real tokens; every hex that matched a token became `var(--…)`. `#0d2b4e` is now `--ink`.
+2. **57 of 60 inline `style=""` attributes → classes** (`.form-*`, `.quote-form`, `.page-hero-inner`, `.section-eyebrow--brand`, `.cta-buttons--spaced`, `.inline-link`, `.footer-brand img`). The three left are per-image `object-position` values on capabilities backgrounds and the laser tile — that's data, not styling. The `<h1 style=…>` on four pages duplicated `.page-hero h1` exactly. The mobile `.nav-logo img { height: 28px }` rule was deleted because the inline 36px had always overridden it — nothing moved.
+3. **Intentional visual changes:** (a) orange CTA `#dd5932` → `--cta: #c2410c` (white text now 4.9:1, was 3.78:1 — the last P1 contrast item); hover `--cta-hover`. (b) footer social icons get a 44 px hit area (WCAG 2.5.8) — they shift ~3 px. (c) gallery lightbox image has an alt.
+4. `style-work.css` moved to `work/style-work.css` (only the five quarantined case-study pages use it; `capabilities.html` stopped loading it in session 5).
+5. **Stale docs deleted:** `AUDIT-FINDINGS.md`, `copy-report.md`, `design-report.md`, `REAL-PARTS-COPY-DECK.md`. Every item in the audit's "what I'd do" list is done or superseded (Work page retired, contrast fixed here). The only audit thread not re-measured: white tile labels over photos rely on the tile scrim gradient for contrast. The copy deck's reasoning (why 4 program cards, kingpin work excluded, shop-wide numbers only) is captured in §2 above.
+
 **Next, in order (agreed 2026-09-03):** ~~SEO basics~~ (done, session 6) (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
 
 ---
@@ -198,14 +207,14 @@ Local Delivery homepage tiles jump to their sections.
 4. ~~Quality & Inspection / Local Delivery sections~~ — done, session 3. **Henry to confirm** the FARO arm CMM + laser scanner wording, which was carried over from the homepage tile rather than verified independently.
 
 ### Remaining audit items (P1/P2)
-5. Contrast still failing on **capabilities (13)**, **work (10)**, **gallery (1)** — mostly white text over photos and the orange `.cap-cta` (3.78:1). index is clean.
-6. Heading order skips h1→h3 on `capabilities.html`.
-7. No `loading="lazy"` on most images (61 site-wide).
-8. Mobile tap targets under 44px (nav links 15px tall, social icons 20×23).
-9. `contact.html` intro duplicates `index.html` verbatim.
+5. ~~Orange `.cap-cta` contrast~~ — fixed session 11. White tile labels over photos not re-measured (scrim-dependent).
+6. ~~Heading order~~ — fixed session 3.
+7. ~~`loading="lazy"`~~ — session 8.
+8. ~~Tap targets~~ — social icons fixed session 11; mobile menu links already ≥40 px.
+9. ~~Contact intro duplicate~~ — rewritten session 5.
 
-### P3 — design system debt (see `design-report.md`)
-51 font sizes, 73 colour literals, 5 near-identical navies, 52 inline `style=""` attributes, ~960 lines of dead CSS (41%). Invisible to customers; makes every future edit slower.
+### P3 — design system debt
+Largely paid down in session 11 (one stylesheet, dead rules out, inline styles to classes, hex → tokens). Still true: ~27 one-off font sizes and a handful of rgba() literals in `style.css`. Cosmetic; touch only when editing those rules anyway.
 
 ### Domain cutover
 10. **Confirm the payment method behind the Nov 5 renewal.** Only hard deadline in the project.
@@ -225,9 +234,8 @@ Local Delivery homepage tiles jump to their sections.
 
 | File | Contents |
 |---|---|
-| `AUDIT-FINDINGS.md` | Prioritised audit — P0/P1/P2/P3 with file:line refs |
-| `copy-report.md` | Full copy audit, 9 categories, every finding + recommended replacement |
-| `design-report.md` | Full design-system audit, 8 categories + quantified drift table |
 | `DNS-SNAPSHOT-dswcutting.com.md` | Complete DNS zone as of 2026-08-18 — the rollback record |
-| `REAL-PARTS-COPY-DECK.md` | Card copy deck and the reasoning behind the 4-card rail |
-| `_redirects` | Legacy URL map |
+| `_redirects` | Legacy URL map + retired-page redirects |
+| `DSW-Capabilities-Sheet.pdf` / `_tools/capabilities-sheet.html` | Buyer-facing capabilities PDF and its source |
+| `dsw-site-edit-spec.md` (Henry's copy, not in repo) | The Chris-review spec implemented in session 4 |
+| `_originals/` (gitignored, Henry's PC only) | Camera originals, pre-resize web copies, unused photos |

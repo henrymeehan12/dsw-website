@@ -68,14 +68,13 @@
   </script>
   <link rel="icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo"><img src="dsw-graphic-logo-blue.png" alt="DSW Cutting" style="height:36px;"></a>
+    <a href="index.html" class="nav-logo"><img src="dsw-graphic-logo-blue.png" alt="DSW Cutting"></a>
     <div class="nav-links" id="nav-links">
       <a href="capabilities.html">Capabilities</a>
       <a href="gallery.html">The Shop</a>
@@ -92,40 +91,40 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <span class="section-eyebrow">Get In Touch</span>
-    <h1 style="font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-0.025em;font-optical-sizing:auto;">Let's Talk</h1>
+    <h1>Let's Talk</h1>
   </div>
 
   <!-- CONTACT FORM & INFO -->
   <div class="cta-band">
     <h2>Tell Us About Your Program.</h2>
-    <p>We'll set up a call. Phone is fastest: <a href="tel:+12053222021" style="color:inherit;border-bottom:1px solid rgba(13,43,78,0.35);text-decoration:none;">205.322.2021</a>.</p>
+    <p>We'll set up a call. Phone is fastest: <a href="tel:+12053222021" class="inline-link">205.322.2021</a>.</p>
 
-    <form name="quote-request" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" style="max-width:680px;margin:2.5rem auto 0;text-align:left;">
+    <form name="quote-request" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field" class="quote-form">
       <input type="hidden" name="form-name" value="quote-request">
-      <p style="display:none;"><input name="bot-field"></p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <p class="hp"><input name="bot-field"></p>
+      <div class="form-grid">
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Name *</label>
-          <input type="text" name="name" required style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label class="form-label">Name *</label>
+          <input type="text" name="name" required class="form-field">
         </div>
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Company</label>
-          <input type="text" name="company" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label class="form-label">Company</label>
+          <input type="text" name="company" class="form-field">
         </div>
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Email *</label>
-          <input type="email" name="email" required style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label class="form-label">Email *</label>
+          <input type="email" name="email" required class="form-field">
         </div>
         <div>
-          <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">Phone</label>
-          <input type="tel" name="phone" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;box-sizing:border-box;">
+          <label class="form-label">Phone</label>
+          <input type="tel" name="phone" class="form-field">
         </div>
       </div>
-      <div style="margin-bottom:1.25rem;">
-        <label style="display:block;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--brand);margin-bottom:0.4rem;">What are you building, and at what volume?</label>
-        <textarea name="message" rows="4" style="width:100%;background:#ffffff;border:1px solid #cbd5e1;padding:0.75rem 1rem;color:#1e2d3d;font-size:0.875rem;font-family:inherit;resize:vertical;box-sizing:border-box;"></textarea>
+      <div class="form-row">
+        <label class="form-label">What are you building, and at what volume?</label>
+        <textarea name="message" rows="4" class="form-field form-field--area"></textarea>
       </div>
-      <button type="submit" class="btn-primary" style="width:100%;cursor:pointer;border:none;font-family:inherit;font-size:0.875rem;">Send Message</button>
+      <button type="submit" class="btn-primary form-submit">Send Message</button>
     </form>
 
     <div class="contact-row">
@@ -135,11 +134,11 @@
       </div>
       <div class="contact-item">
         <span class="contact-label">Email</span>
-        <div class="contact-val"><a href="mailto:info@dswcutting.com" style="color:inherit;text-decoration:none;">info@dswcutting.com</a></div>
+        <div class="contact-val"><a href="mailto:info@dswcutting.com">info@dswcutting.com</a></div>
       </div>
       <div class="contact-item">
         <span class="contact-label">Phone</span>
-        <div class="contact-val"><a href="tel:+12053222021" style="color:inherit;text-decoration:none;">205.322.2021</a></div>
+        <div class="contact-val"><a href="tel:+12053222021">205.322.2021</a></div>
       </div>
       <div class="contact-item">
         <span class="contact-label">Facility</span>
@@ -152,7 +151,7 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="dsw-graphic-logo.png" alt="DSW Cutting" style="height:28px;opacity:0.7;">
+        <img src="dsw-graphic-logo.png" alt="DSW Cutting">
         <span class="footer-tagline">Precision Fabrication · Birmingham, AL · Founded 2004</span>
       </div>
       <div class="footer-social">
