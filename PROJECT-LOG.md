@@ -29,7 +29,12 @@
 
 - **Multiple buildings**, not one. Never say "one roof" or "single facility." The approved framing is **"One company. One point of contact."**
 - **230,000 sq ft** = combined across Birmingham facilities.
-- **8 flat fiber lasers** (7 Mitsubishi + 1 Bescutter Giga 20 kW) + **3 tube lasers** = **11 fiber lasers total.**
+- **8 flat fiber lasers** (7 Mitsubishi + 1 Bescutter Giga 20 kW) + **3 tube lasers** = **11 fiber lasers total.** (About stat band said 12 until session 4 — now 11.)
+- **3 material towers feed 6 of the 8 flat lasers** (was published as 2 towers / "five automation-fed" until session 4).
+- **Robotic welding: 4 robots across 9 automated weld windows** (three 2-window cells + one 3-window cell). Publish the totals only, never the per-cell breakdown.
+- **Site policy since 2026-09-03 (Chris review): no machine manufacturer or model names in copy** — chips, body, headings, meta, JSON-LD. Specs only. Brands are fine in photo filenames, `alt` text and `og:image`. **FARO is the one exception** and stays everywhere (customers name it in their own quality requirements). The brand facts in this section are for internal reference only.
+- **No history / heritage / city-lore / sentiment on the site**, and **no named individuals** (Chris's name is off the site by his own request). Company voice only.
+- **Do not advertise short-notice / rush / pull-ahead delivery**, even though the shop can do it.
 - **Tube lasers are: BLM LT8, Bescutter HyTube 7532, Bescutter Titan 12036D.** The **Bescutter Apex 3030 has been removed** from the site — it is not in service.
 - 2024: dedicated tube-laser facility opened in North Birmingham, 3 machines.
 - Other constants: founded 2004 · 80 employees · 2 plasma tables · 5 Mitsubishi press brakes + 1 robotic bending cell · 4 OTC Daihen weld robots · 2 Haas VF-3YT-50 machining centres (recently installed) · 6 trucks · 2″ max plate · 40 ft max tube outbound · 14″ max OD.
@@ -87,6 +92,21 @@ Fixed:
 
 ---
 
+### Session 4 — Chris review pass (2026-09-03, spec: `dsw-site-edit-spec.md` §1–§6; in the local clone, **not yet committed**)
+
+1. **All machine branding stripped from copy** on `capabilities`, `index`, `gallery`, and the unlinked `work/frame-rail-components.html` + `work/heavy-structural-weldments.html`. Chips became spec-only (`8× Flat Fiber Lasers`, `20 kW · Large Frame · 11.5 ft Wide`, `3D Bevel Head · 0–45°`, `2× HD Plasma Tables`, `400 A Plasma · Up to 2″ Plate`, `3× Tube Laser Systems`, `5× CNC Press Brakes`, `Plate Roller`, `2× CNC Vertical Machining Centers`). The CNC body lost the 40-taper comparison and the "specs will publish as the cells come online" line. Siegmund tables → "modular welding tables" on the work page; BLM chip → `40 ft Outbound`. Hits left in `<img alt>` / `og:image` / filenames are intentional.
+2. **Towers → 3** (`3× Automation Towers`, "six of them tower-fed"; homepage automation tile: `3 towers feeding 6 lasers`).
+3. **Welding publishes both numbers**: `4× Welding Robots` + `9 Automated Weld Windows` chips, body "one window loading while another runs"; homepage tile `4 robots · 9 automated weld windows · manual MIG & TIG`; gallery step 04 matched.
+4. **Local Delivery**: `Short-Notice Pulls` chip deleted, body rewritten per spec ("on the day they're scheduled"). Repo-wide `rush|short.notice|pull-ahead|expedite|quick.turn` = 0 hits.
+5. **About page cut**: "A Shop Reborn in Steel City" text and the entire "Steel has always run through this city" heritage banner (incl. `plasma-burst-dark.jpg` block) deleted. Hero photo kept with a 3-line plain-fact intro in its place. Stat band verified standalone with its white background — and corrected **12 → 11**. Meta/og description replaced. Dead `.heritage-banner*` and `.leadership-*` CSS removed (no leadership block ever existed in the HTML). Chris's name: 0 hits site-wide.
+6. **De-flowering**: index hero subhead, all five section heads, closing CTA, and the partner section (now "How We Work", 1 short paragraph — the About page keeps the long "Product Partner" version) per the spec table. The process section's eyebrow was dropped because it already read "How It Works" and would have doubled the new title. Capabilities: Jig & Fixture closing sentence and "No handoffs. No finger-pointing." removed. `contact.html` shared the index closing line verbatim, so it got the same "Send Us Your Drawings." replacement. Gallery facility paragraph lost its "industrial corridor … built American infrastructure" line (city-lore) — now a plain 230,000 sq ft / two shifts statement.
+
+**Verified after changes (§8 checklist, run against a copy of the built output = repo minus `work/`):** brand list → 0 hits outside `<img>`/`og:image`; `McIlvaine|Chris` 0; rush/short-notice 0; `Sloss|knife shop|1960s|Steel City` 0; the `work/` pages pass the same greps; every `capabilities.html#…` anchor still resolves; no `about.html#` anchors exist anywhere; About `<div>` balance 44/44; rendered screenshots of about/index/capabilities look right.
+
+**Spec item that could not be satisfied as written:** §8 says "FARO still present on … About." FARO was never on the About page (0 hits at `67ab6d0`), so nothing was removed — it just was never there. Adding it is a one-word change to differentiator 02 if wanted; not done because it wasn't in §1–§6.
+
+---
+
 ## 4. Gotchas — read before editing
 
 - **`tokens.css` must load BEFORE `style.css`.** `style.css` declares its own `:root` that redefines several token names with *different* values (`--navy` is `#141c2e` there, `#0D2B4E` in tokens). Loading tokens first lets style.css win on conflicts while filling the 26 gaps. **Do not delete `style.css`'s `:root` block** without a full regression pass — much of the site depends on it.
@@ -100,16 +120,15 @@ Fixed:
 
 ## 5. Open work, in priority order
 
-**Uncommitted right now:** 11 modified files plus 1 new one in the local clone —
-`index, capabilities, work, gallery, about, contact, 404, style.css` (session 2) and
-`index, capabilities, contact, _redirects, netlify.toml` + new `thank-you.html` (session 3).
-Commit and push to deploy. **Nothing from session 2 or 3 is live yet.**
+Sessions 2 and 3 were committed and pushed as `67ab6d0` (confirmed identical on GitHub 2026-09-03).
+
+**Uncommitted right now (session 4):** `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
 
 Suggested commit, run from the local clone in PowerShell:
 
 ```
 git add -A
-git commit -m "P0 audit fixes, thank-you page, quality + delivery capability sections"
+git commit -m "Chris review pass: strip machine branding, 3 towers / 9 weld windows, About cut, de-flowering"
 git push
 ```
 
@@ -119,7 +138,7 @@ Netlify auto-builds from `main`. After the deploy, confirm three things on
 Local Delivery homepage tiles jump to their sections.
 
 ### Before showing the boss
-1. Commit + push the batch above. ← **the only thing standing between the work and the staging URL**
+1. ~~Commit + push sessions 2–3~~ — done (`67ab6d0`). **Commit + push session 4** ← the only thing standing between the Chris-review edits and the staging URL
 2. ~~Thank-you page~~ — done, session 3.
 3. ~~The `[FILL: …]` placeholders~~ — quarantined, session 3. Still outstanding as *content*: the 15 placeholders need real, non-identifying values before those 5 pages can be published, and 4 of them ask for a customer identity that can never be published as-is. Rewrite those 4 as industry framing ("a trailer OEM"), not a name.
 4. ~~Quality & Inspection / Local Delivery sections~~ — done, session 3. **Henry to confirm** the FARO arm CMM + laser scanner wording, which was carried over from the homepage tile rather than verified independently.
