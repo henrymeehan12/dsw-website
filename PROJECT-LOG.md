@@ -131,6 +131,17 @@ Henry shot the machining centers (9504×6336 camera originals). Originals are ar
 - `photos/cnc-vmc-front.jpg` — 1600 px, 231 KB — full-width tile at the end of the second gallery grid.
 Machine badge and logo are visible in both; that's allowed (brands in photos stay). Alt text describes the picture without naming the brand. **Swap for in-use shots once production starts** — one `src` change each.
 
+### Session 8 — photo pipeline (2026-09-03, **not yet committed**)
+
+Reality check first: only 9 of the 36 images in use were oversized (2400–2560 px cap-section backgrounds); the rest were already 1280 px / ~100 KB. The heavy items were those 9 and the 6.3 MB hero video.
+1. **9 backgrounds resized to 2000 px** (Lanczos, JPEG q82, progressive). Pre-resize copies in `_originals/web-src/`. Judged on a 1:1 crop of a 1920-wide render — no visible difference. Saved ~1.2 MB.
+2. **Hero video re-encoded**: same 1280×720 / 24 fps, H.264 CRF 27, no audio track, faststart → `photos/dsw_webloop.mp4`, **6.3 MB → 3.2 MB**. Original in `_originals/web-src/`.
+3. **`loading="lazy" decoding="async"`** on every photo `<img>` except the first one on each page (index tile 1, capabilities laser background, about/gallery lead photo). Gallery already had it.
+4. **72 unused photos (14 MB) moved out of `photos/` into `_originals/unused/`** (gitignored). `git` shows them as deleted; they're still in history and on Henry's PC. `photos/` is now 36 files / 8 MB, every one referenced.
+5. Not done, worth knowing: three capabilities backgrounds (`dsw-conestoga-loading`, `faro-arm-inspection`, `worker-hands-parts`) are only **1280 px** and get stretched full-bleed on a 1920 screen — the opposite problem. If higher-res originals exist, drop 2000 px versions in with the same filenames.
+6. **Homepage Laser & Plasma tile photo swapped** for Henry's new laser-head shot (`photos/laser-head-sparks.jpg`, 2000 px / 191 KB, `object-position: center 55%` so the head sits in the tall crop; original `_originals/laser-head-DSC04330.JPG`). `mitsubishi-laser-sparks.jpg` stays only because it is every page's `og:image`.
+`netlify.toml` image compression stays **off** — we control quality here.
+
 **Next, in order (agreed 2026-09-03):** ~~SEO basics~~ (done, session 6) (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
 
 ---
@@ -150,13 +161,13 @@ Machine badge and logo are visible in both; that's allowed (brands in photos sta
 
 Sessions 2 and 3 were committed and pushed as `67ab6d0` (confirmed identical on GitHub 2026-09-03).
 
-**Sessions 4–6 committed (`353e7b8`, `cd5a4da`, `9b2025c`).** Uncommitted right now (session 7): `.gitignore`, two new photos, `capabilities.html`, `gallery.html`, `PROJECT-LOG.md`. Session 5 was: `index, capabilities, about, gallery, contact, thank-you, 404, _redirects, PROJECT-LOG.md`, deleted `work.html`. Was: `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
+**Sessions 4–7 committed (`353e7b8`, `cd5a4da`, `9b2025c`, `0e4f60d`).** Uncommitted right now (session 8): 3 html files, 9 resized + 1 new mp4, 73 deletions under `photos/`, `PROJECT-LOG.md`. Session 5 was: `index, capabilities, about, gallery, contact, thank-you, 404, _redirects, PROJECT-LOG.md`, deleted `work.html`. Was: `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
 
 Suggested commit, run from the local clone in PowerShell:
 
 ```
 git add -A
-git commit -m "CNC machining photos: probe hero on capabilities, VMC in gallery"
+git commit -m "Photo pipeline: resize hero backgrounds, lazy-load, re-encode hero video, drop 72 unused photos"
 git push
 ```
 
