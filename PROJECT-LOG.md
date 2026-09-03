@@ -166,6 +166,11 @@ Goal: same site, less code. Verified by pixel-diffing full-page screenshots of a
 4. `style-work.css` moved to `work/style-work.css` (only the five quarantined case-study pages use it; `capabilities.html` stopped loading it in session 5).
 5. **Stale docs deleted:** `AUDIT-FINDINGS.md`, `copy-report.md`, `design-report.md`, `REAL-PARTS-COPY-DECK.md`. Every item in the audit's "what I'd do" list is done or superseded (Work page retired, contrast fixed here). The only audit thread not re-measured: white tile labels over photos rely on the tile scrim gradient for contrast. The copy deck's reasoning (why 4 program cards, kingpin work excluded, shop-wide numbers only) is captured in §2 above.
 
+### Session 12 — About page layout + analytics (2026-09-03, **not yet committed**)
+
+1. **About intro panel rebuilt (Henry picked "option B").** The navy panel next to the hero photo had been designed for a heading and four paragraphs; with the session-4 cut it held three floating sentences in 580 px of empty blue. Now: "Who We Are" label, heading "Same ownership since 2004.", the three facts as one paragraph, and the **four stats (2004 / 230,000 / 80 / 11) as a 2×2 grid inside the panel**. The separate white stat band is gone — same numbers, same order, relocated. If Chris wants the strip back it's a small revert (the old `.about-stats` markup is in git at `dddd542`). Photo is now 4:3 at its natural height; the About `h1` lost its centered wrapper so it lines up with every other page.
+2. **Google Analytics 4** — Henry's choice over Netlify Analytics (free, shareable login, tracks PDF downloads and tel: taps). **Waiting on the Measurement ID (`G-…`)** to add the tag to all 7 pages.
+
 **Next, in order (agreed 2026-09-03):** ~~SEO basics~~ (done, session 6) (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
 
 ---

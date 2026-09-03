@@ -1,2 +1,5 @@
 # Full-resolution camera originals — resized web copies live in photos/
 _originals/
+
+# Files the Claude desktop app drops into the connected folder
+Claude outputs/
