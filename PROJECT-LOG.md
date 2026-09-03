@@ -152,6 +152,11 @@ Every page rendered at iPhone 13 (390 px) and iPhone SE (375 px) after the grid 
 3. **Gallery copy** still said the machining centers "add CNC machining to the floor" — now "are installed and come online Q4 2026", matching capabilities.
 Checked and fine: capabilities sections stack photo-over-card; About and Contact clean; nav logo / Contact button / hamburger don't collide down to 375 px; work rail stacks vertically with controls hidden. (Blank photo areas in full-page screenshots are lazy-loading not firing in the headless capture — images load normally on scroll.)
 
+### Session 10 — capabilities sheet PDF (2026-09-03, **not yet committed**)
+
+`DSW-Capabilities-Sheet.pdf` (Letter, 2 pages, ~450 KB) at the repo root, linked from the capabilities page hero and the Quality section. **Built from the live capabilities copy** (chips + body text scraped from `capabilities.html`), so it says exactly what the site says: no brands, CNC "coming online Q4 2026", no certifications claimed. Source is `_tools/capabilities-sheet.html` (self-contained, fonts from Google, photos inlined) — re-render with Chrome print-to-PDF or Playwright after any capabilities copy change, and bump the "Rev." month in the header. `_tools/` is stripped from the Netlify build.
+Business context recorded for whoever edits this next: **DSW is not ISO certified** (Chris's call, tied to whether he wants to scale). The "AWS" welding credential stays deliberately unspecific. Neither the site nor the PDF claims any certification.
+
 **Next, in order (agreed 2026-09-03):** ~~SEO basics~~ (done, session 6) (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
 
 ---

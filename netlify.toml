@@ -1,9 +1,11 @@
 [build]
-  # The five case-study pages under work/ still contain [FILL: …] placeholders
-  # and unreleased customer detail. They stay in the repo but are stripped from
-  # the build so they are neither live nor indexable. Delete this command line
-  # (and nothing else) when the pages are finished and ready to publish.
-  command = "rm -rf work"
+  # work/  — five case-study pages with [FILL: …] placeholders and unreleased
+  #          customer detail; kept in git, never deployed.
+  # _tools/ — source HTML for DSW-Capabilities-Sheet.pdf (re-render with
+  #          Chrome "Print to PDF", Letter, no margins, background graphics on).
+  # Neither is deployed. Remove "work" from the command when the case studies
+  # are ready to publish.
+  command = "rm -rf work _tools"
   publish = "."
 
 [build.processing]

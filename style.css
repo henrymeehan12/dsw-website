@@ -238,6 +238,14 @@ nav {
   flex-shrink: 0;
 }
 .cap-grid-link:hover { opacity: 0.7; }
+.page-hero-link {
+  display: inline-block; margin-top: 1.25rem;
+  font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 500;
+  color: var(--brand-light); text-decoration: none;
+  padding-bottom: 0.2rem; border-bottom: 1px solid var(--brand-light);
+  transition: opacity 0.2s;
+}
+.page-hero-link:hover { opacity: 0.7; }
 
 /* Grid layout: tall left + 3 right (2×2-ish) */
 .cap-grid {
