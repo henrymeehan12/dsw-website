@@ -115,7 +115,16 @@ Henry's framing: DSW has a few large program customers, not many small ones. The
 
 **Verified:** every internal `href` and `#anchor` across the 7 deployed pages resolves (scripted check); brand / name / rush / heritage greps still 0 in copy; no `work.html` references anywhere; screenshots of index, contact, 404, thank-you reviewed.
 
-**Next, in order (agreed 2026-09-03):** SEO basics (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
+### Session 6 — SEO basics (2026-09-03, **not yet committed**)
+
+1. `sitemap.xml` (5 indexable pages; thank-you and 404 excluded) and `robots.txt` (allow all, disallow `/thank-you`, sitemap link).
+2. **`LocalBusiness` JSON-LD** in the `<head>` of the 5 indexable pages: name, address, phone, email, founded 2004, hours, service area, Instagram/LinkedIn `sameAs`, and a 9-item service catalog that deep-links to the capabilities anchors. No equipment brands, no counts, nothing that could go stale except hours.
+   - **Hours are Mon–Fri 07:00–16:30, taken from the public listing that mirrors Google** — **Henry to confirm.** If the front office keeps different hours from the floor, publish the office hours.
+3. **Canonical / og:url / sitemap all use `https://www.dswcutting.com/`** (was apex). This matches the cutover plan below — www is the primary domain, every indexed legacy URL is www — so the canonical tag won't point through a redirect. If the primary-domain decision ever flips to apex, change these in the same commit.
+
+**After cutover (not before):** claim/verify the site in Google Search Console for `www.dswcutting.com`, submit the sitemap, and make sure the Google Business Profile shows the same name, address, phone, hours and website as the schema. Netlify's primary-domain setting must be www for the canonicals above to be right.
+
+**Next, in order (agreed 2026-09-03):** ~~SEO basics~~ (done, session 6) (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
 
 ---
 
@@ -134,13 +143,13 @@ Henry's framing: DSW has a few large program customers, not many small ones. The
 
 Sessions 2 and 3 were committed and pushed as `67ab6d0` (confirmed identical on GitHub 2026-09-03).
 
-**Session 4 committed as `353e7b8`.** Uncommitted right now (session 5): `index, capabilities, about, gallery, contact, thank-you, 404, _redirects, PROJECT-LOG.md`, deleted `work.html`. Was: `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
+**Sessions 4–5 committed (`353e7b8`, `cd5a4da`).** Uncommitted right now (session 6): `sitemap.xml`, `robots.txt`, 7 html files (schema + www canonicals), `PROJECT-LOG.md`. Session 5 was: `index, capabilities, about, gallery, contact, thank-you, 404, _redirects, PROJECT-LOG.md`, deleted `work.html`. Was: `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
 
 Suggested commit, run from the local clone in PowerShell:
 
 ```
 git add -A
-git commit -m "Not-a-job-shop CTA pass, retire Work page, CNC coming online Q4 2026"
+git commit -m "SEO: sitemap, robots, LocalBusiness schema, www canonicals"
 git push
 ```
 
