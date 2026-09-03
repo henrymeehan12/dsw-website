@@ -144,6 +144,14 @@ Reality check first: only 9 of the 36 images in use were oversized (2400–2560 
    - **Found while testing: on phones (≤768 px) four of the seven tiles were invisible** — the desktop `grid-column: 2 / 4` / `grid-row: 1 / 3` spans created an implicit zero-width third column in the 2-column mobile grid and Laser, Tube, Welding and Automation landed in it. Mobile is now a single column, every tile 16/10, verified at 390 and 768 px. This was live on the netlify site.
 `netlify.toml` image compression stays **off** — we control quality here.
 
+### Session 9 — mobile pass (2026-09-03, **not yet committed**)
+
+Every page rendered at iPhone 13 (390 px) and iPhone SE (375 px) after the grid fix. No horizontal overflow on any page. Fixed:
+1. **Hero eyebrow** ("Founded 2004 · Birmingham, AL · 230,000 sq ft") broke mid-item into three ragged columns — now wraps whole items (`flex-wrap`, `white-space: nowrap` per span).
+2. **Homepage stats bar** was four-across on phones with labels at ~7 px — now a 2×2 grid at readable sizes (the ≤480 px override that shrank it further is gone).
+3. **Gallery copy** still said the machining centers "add CNC machining to the floor" — now "are installed and come online Q4 2026", matching capabilities.
+Checked and fine: capabilities sections stack photo-over-card; About and Contact clean; nav logo / Contact button / hamburger don't collide down to 375 px; work rail stacks vertically with controls hidden. (Blank photo areas in full-page screenshots are lazy-loading not firing in the headless capture — images load normally on scroll.)
+
 **Next, in order (agreed 2026-09-03):** ~~SEO basics~~ (done, session 6) (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
 
 ---
