@@ -124,6 +124,13 @@ Henry's framing: DSW has a few large program customers, not many small ones. The
 
 **After cutover (not before):** claim/verify the site in Google Search Console for `www.dswcutting.com`, submit the sitemap, and make sure the Google Business Profile shows the same name, address, phone, hours and website as the schema. Netlify's primary-domain setting must be www for the canonicals above to be right.
 
+### Session 7 — CNC photos (2026-09-03, **not yet committed**)
+
+Henry shot the machining centers (9504×6336 camera originals). Originals are archived in **`_originals/`** (gitignored — never committed, never deployed; the folder lives only on Henry's PC, so back it up with the rest of the camera roll). Web copies made with Pillow (Lanczos, JPEG q82, progressive):
+- `photos/cnc-probe-hero.jpg` — 2000 px, 104 KB — the capabilities `#machining` background (replaces `cap-coming-soon.jpg`).
+- `photos/cnc-vmc-front.jpg` — 1600 px, 231 KB — full-width tile at the end of the second gallery grid.
+Machine badge and logo are visible in both; that's allowed (brands in photos stay). Alt text describes the picture without naming the brand. **Swap for in-use shots once production starts** — one `src` change each.
+
 **Next, in order (agreed 2026-09-03):** ~~SEO basics~~ (done, session 6) (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
 
 ---
@@ -143,13 +150,13 @@ Henry's framing: DSW has a few large program customers, not many small ones. The
 
 Sessions 2 and 3 were committed and pushed as `67ab6d0` (confirmed identical on GitHub 2026-09-03).
 
-**Sessions 4–5 committed (`353e7b8`, `cd5a4da`).** Uncommitted right now (session 6): `sitemap.xml`, `robots.txt`, 7 html files (schema + www canonicals), `PROJECT-LOG.md`. Session 5 was: `index, capabilities, about, gallery, contact, thank-you, 404, _redirects, PROJECT-LOG.md`, deleted `work.html`. Was: `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
+**Sessions 4–6 committed (`353e7b8`, `cd5a4da`, `9b2025c`).** Uncommitted right now (session 7): `.gitignore`, two new photos, `capabilities.html`, `gallery.html`, `PROJECT-LOG.md`. Session 5 was: `index, capabilities, about, gallery, contact, thank-you, 404, _redirects, PROJECT-LOG.md`, deleted `work.html`. Was: `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
 
 Suggested commit, run from the local clone in PowerShell:
 
 ```
 git add -A
-git commit -m "SEO: sitemap, robots, LocalBusiness schema, www canonicals"
+git commit -m "CNC machining photos: probe hero on capabilities, VMC in gallery"
 git push
 ```
 
