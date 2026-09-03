@@ -105,6 +105,18 @@ Fixed:
 
 **Spec item that could not be satisfied as written:** §8 says "FARO still present on … About." FARO was never on the About page (0 hits at `67ab6d0`), so nothing was removed — it just was never there. Adding it is a one-word change to differentiator 02 if wanted; not done because it wasn't in §1–§6.
 
+### Session 5 — "not a job shop" pass, Work page retired, CNC labelled (2026-09-03, **not yet committed**)
+
+Henry's framing: DSW has a few large program customers, not many small ones. The site should get a buyer onto a call, not collect drawings from anyone. **No file upload on the contact form — ever.**
+
+1. **CTA / tone pass.** Homepage step 01 "Get a Quote / Send your drawings" → "Start a Conversation" (talk to a sales engineer about what you're building, volumes, how the program would run). Closing band on index → "Let's Talk About Your Program. / Tell us what you're building and we'll set up a call." Contact page: h2 "Tell Us About Your Program.", phone called out as fastest (now a `tel:` link, email a `mailto:`), message field relabelled "What are you building, and at what volume?", meta/og description rewritten. About + gallery CTA subline, thank-you body ("if it's easier to talk it through, call…"), thank-you "Send Drawings" label → "Email", 404 body + button ("Get a Quote" → "Contact Us") all brought in line. The remaining "drawing"/"quoting" mentions (About §Product Partner, capabilities Engineering + Quality) are the DFM-at-quote sales argument and stay on purpose. Netlify form is still named `quote-request` — renaming it would register a new form in the dashboard; cosmetic, left alone.
+2. **Work page retired.** `work.html` deleted from git (history keeps it at `353e7b8`). Reasoning: customer anonymity + not showing competitors the parts + Chris's "what we do could change tomorrow" all point away from a parts page; program credibility already lives in the homepage rail. Nav and footer "Work" links removed on all 7 pages; 404 and thank-you lost their Work tiles; homepage rail eyebrow "Featured Work" → "Programs", "See All Work →" removed; the four rail cards now deep-link to `capabilities.html#quality / #tube / #delivery / #finishing`. Industries section got `id="industries"` (and lost its duplicate eyebrow); `_redirects` sends `/work` and `/work.html` → `/#industries` (301). `capabilities.html` no longer loads `style-work.css` (it used none of it). The five `work/` case-study files stay in git, still stripped from the build.
+3. **CNC not operational** (training starts week of 2026-09-07). Chip "Recently Installed" → **"Coming Online Q4 2026"**, body ends "Installed and being commissioned — coming online Q4 2026." Homepage Complete Weldments card no longer claims "machined" on a shipped part (pill "CNC Machined" → "Weld-Ready"). "Machining" stays in the service lists (hero subhead, meta, About meta) because the equipment is on the floor and the date is published. **Photo still the `cap-coming-soon.jpg` placeholder — Henry is supplying a real one.**
+
+**Verified:** every internal `href` and `#anchor` across the 7 deployed pages resolves (scripted check); brand / name / rush / heritage greps still 0 in copy; no `work.html` references anywhere; screenshots of index, contact, 404, thank-you reviewed.
+
+**Next, in order (agreed 2026-09-03):** SEO basics (sitemap, robots, LocalBusiness JSON-LD, GBP check) → photo pipeline (resize to display size, lazy-load, video re-encode; originals archived, quality judged on screen before commit) → code cleanup (one CSS file, dead rules out, inline styles to classes, unused photos + stale report docs removed).
+
 ---
 
 ## 4. Gotchas — read before editing
@@ -122,13 +134,13 @@ Fixed:
 
 Sessions 2 and 3 were committed and pushed as `67ab6d0` (confirmed identical on GitHub 2026-09-03).
 
-**Uncommitted right now (session 4):** `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
+**Session 4 committed as `353e7b8`.** Uncommitted right now (session 5): `index, capabilities, about, gallery, contact, thank-you, 404, _redirects, PROJECT-LOG.md`, deleted `work.html`. Was: `index, capabilities, about, gallery, contact, PROJECT-LOG.md` and the two `work/` pages above. Also ~16 files that show as modified but are CRLF-only noise from the Windows checkout (`git diff --ignore-cr-at-eol --stat` is empty) — harmless to commit.
 
 Suggested commit, run from the local clone in PowerShell:
 
 ```
 git add -A
-git commit -m "Chris review pass: strip machine branding, 3 towers / 9 weld windows, About cut, de-flowering"
+git commit -m "Not-a-job-shop CTA pass, retire Work page, CNC coming online Q4 2026"
 git push
 ```
 

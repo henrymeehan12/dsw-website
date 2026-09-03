@@ -27,3 +27,7 @@
 # search engines pick it up immediately instead of honouring a cached 301.
 /careers/                   /about.html           302
 /careers                    /about.html           302
+
+# Work page retired 2026-09-03 — industries live on the homepage now.
+/work.html                  /#industries          301
+/work                       /#industries          301
